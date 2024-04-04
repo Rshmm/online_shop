@@ -24,5 +24,5 @@ from account import views
 app_name = "account"
 
 urlpatterns = [
-    path('signup/' , views.SignUpView.as_view(), name="singup")
+    path('signup/' , views.SignUpView.as_view(), name="signup")
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
