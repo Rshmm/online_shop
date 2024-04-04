@@ -21,8 +21,8 @@ from django.conf.urls.static import static
 from account import views
 
 
+app_name = "account"
+
 urlpatterns = [
     path('signup/' , views.SignUpView.as_view(), name="singup")
-
-
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

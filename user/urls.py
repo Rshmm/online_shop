@@ -21,7 +21,7 @@ from django.conf.urls.static import static
 from user import views
 
 urlpatterns = [
-    path('', views.Userpanel, name="user_panel"),
+    path('panel/', views.Userpanel, name="user_panel"),
     path('profile/',views.Profile , name="profile"),
     path('address/' , views.Address , name="address"),
     path('createaddress/',views.Createaddress , name="address-create")
