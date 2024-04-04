@@ -120,19 +120,24 @@
                   </div>
 
                   <p class="loginTermsDesc mt-3">
+                    حسابی ندارید؟
+                    <a
+                    id="singup-link"
+                      class="underlined main-color-one-color fw-bold"
+                      href="{% url "account:singup" %}"
+                      >ثبت نام</a
+                    >
+                    کنید
+                  </p>
+
+                  <p class="loginTermsDesc mt-3">
                     با ورود و یا ثبت نام در سانیار شما
                     <a
                       class="underlined main-color-one-color fw-bold"
                       href="/rules/"
                       >شرایط و قوانین</a
                     >
-                    استفاده از سرویس‌های سایت سانیار و
-                    <a
-                      class="underlined main-color-one-color fw-bold"
-                      href="/privacy-polices/"
-                      >قوانین حریم خصوصی</a
-                    >
-                    آن را می‌پذیرید.
+                    استفاده از سرویس‌های سایت سانیار را می‌پذیرید.
                   </p>
                 </div>
               </div>
@@ -368,6 +373,9 @@
           },
         ],
       });
+
+      const params = new URLSearchParams(document.location.search);
+      document.getElementById("singup-link").href = "{% url 'account:singup' %}?next=" + params.get("next"); 
     </script>
     <!-- ===== end new update -->
   </body>
