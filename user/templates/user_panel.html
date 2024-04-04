@@ -723,12 +723,11 @@
                                                 <li class="nav-item"><a href="" class="nav-link">
                                                         <i class="bi bi-gift"></i>کد های تخفیف من</a>
                                                 </li>
-                                                <form action='{% url "logout" %}' method="post">
-                                                    {% csrf_token %} 
+                                                {% comment %} <form action='{% url "logout" %}' method="post">
                                                     <button type="submit" >Logout</button>
-                                                </form>
-                                                {% comment %} <li class="nav-item"><a href='{% url "logout" %}'class="nav-link">
-                                                        <i class="bi bi-arrow-right-square"></i>خروج از حساب کاربری</a> {% endcomment %}
+                                                </form> {% endcomment %}
+                                                <li class="nav-item"><a href='{% url "logout" %}'class="nav-link">
+                                                    <i class="bi bi-arrow-right-square"></i>خروج از حساب کاربری</a>
                                                 </li>
                                             </ul>
                                         </nav>
