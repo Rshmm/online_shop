@@ -243,7 +243,7 @@
                             </figure>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href=""><i class="bi bi-house-door me-2"></i>پروفایل</a>
+                            <li><a class="dropdown-item" href='{% url "profile" %}'><i class="bi bi-house-door me-2"></i>پروفایل</a>
                             </li>
                             <li><a class="dropdown-item" href=""><i class="bi bi-cart-check me-2"></i>سفارش های
                                 من</a></li>
@@ -558,12 +558,6 @@
                     </div>
                 </div>
                 <div class="col-lg-3">
-                    <div class="d-flex align-items-center justify-content-end">
-                        <a href='{% url "home" %}'
-                            class="btn header-cart-toggle rounded-pill btn-white border-0 shadow-sm">خانه<i
-                                class="bottom"></i></a>
-                       
-                    </div>
                 </div>
             </div>
         </div>
@@ -580,11 +574,11 @@
             <div class="container-fluid">
                 <nav aria-label="breadcrumb" class="my-lg-0 my-2">
                     <ol class="breadcrumb mb-0">
-                        <li class="breadcrumb-item"><a class="font-14 text-muted" href="#">خانه</a></li>
-                        <li class="breadcrumb-item"><a class="font-14 text-muted" href="#">فروشگاه</a></li>
-                        <li class="breadcrumb-item"><a class="font-14 text-muted" href="#">گوشی هوشمند</a></li>
-                        <li aria-current="page" class="breadcrumb-item active main-color-one-color font-14">گوشی
-                            شیائومی
+                        <li class="breadcrumb-item"><a class="font-14 text-muted" href='{% url "home" %}'>خانه</a></li>
+                        <li class="breadcrumb-item"><a class="font-14 text-muted" href='{% url "user_panel" %}'>حساب کاربری</a></li>
+                        
+                        <li aria-current="page" class="breadcrumb-item active main-color-one-color font-14">
+                            آدرس های من
                         </li>
                     </ol>
                 </nav>
@@ -632,12 +626,11 @@
                                 <div class="profile-box">
                                     <nav class="navbar profile-box-nav">
                                         <ul class="navbar-nav flex-column">
-                                            <li class="nav-item active"><a class="nav-link" href="">
+                                            <li class="nav-item active"><a class="nav-link" href='{% url "profile" %}'>
                                                 <i class="bi bi-house-door"></i>پروفایل</a>
                                             </li>
                                             <li class="nav-item"><a class="nav-link" href="">
-                                                <i class="bi bi-cart-check"></i>سفارش های من <span
-                                                    class="badge rounded-pill badge-spn">5</span></a>
+                                                <i class="bi bi-cart-check"></i>سفارش های من </a>
                                             </li>
                                             <li class="nav-item"><a class="nav-link" href='{% url "address" %}'>
                                                 <i class="bi bi-pin-map"></i>آدرس های من</a>
@@ -691,14 +684,13 @@
                                 <div class="profile-box">
                                     <nav class="navbar profile-box-nav">
                                         <ul class="navbar-nav flex-column">
-                                            <li class="nav-item active"><a class="nav-link" href="">
+                                            <li class="nav-item "><a class="nav-link" href='{% url "profile" %}'>
                                                 <i class="bi bi-house-door"></i>پروفایل</a>
                                             </li>
                                             <li class="nav-item"><a class="nav-link" href="">
-                                                <i class="bi bi-cart-check"></i>سفارش های من <span
-                                                    class="badge rounded-pill badge-spn">5</span></a>
+                                                <i class="bi bi-cart-check"></i>سفارش های من </a>
                                             </li>
-                                            <li class="nav-item"><a class="nav-link" href='{% url "address" %}'>
+                                            <li class="nav-item active"><a class="nav-link" href='{% url "address" %}'>
                                                 <i class="bi bi-pin-map"></i>آدرس های من</a>
                                             </li>
                                             <li class="nav-item"><a class="nav-link" href="">
@@ -716,13 +708,15 @@
                                             <li class="nav-item"><a class="nav-link" href="">
                                                 <i class="bi bi-gift"></i>کد های تخفیف من</a>
                                             </li>
-                                            <form action="{% url 'logout' %}" method="post">
-                                                {% csrf_token %} 
-                                                <button type="submit">Logout</button>
-                                            </form>
-                                            {% comment %} <li class="nav-item"><a class="nav-link" href="">
-                                                <i class="bi bi-arrow-right-square"></i>خروج از حساب کاربری</a>
-                                            </li> {% endcomment %}
+                                            <form action='{% url "logout" %}' method="post">
+                                                {% csrf_token %}
+                                               <button
+                                                       type="submit"
+                                                       class="main-color-one-bg py-3 btn w-100 btnForm rounded-3"
+                                               >
+                                                    خروج از حساب کاربری
+                                                </button>
+                                            </form> 
                                         </ul>
                                     </nav>
                                 </div>

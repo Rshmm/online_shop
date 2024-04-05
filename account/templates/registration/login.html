@@ -46,11 +46,6 @@
       <div class="container-fluid h-100">
         <div class="col-lg-3">
           <div class="d-flex align-items-center justify-content-end">
-            <a
-              href='{% url "home" %}'
-              class="btn header-cart-toggle rounded-pill btn-blue border-5 shadow-sm"
-              >خانه<i class="bottom"></i
-            ></a>
           </div>
         </div>
         <div class="auth h-100 d-flex align-items-center">
@@ -130,6 +125,17 @@
                     کنید
                   </p>
 
+                  <p class="loginTermsDesc mt-3">
+                    می خواهید به
+                    <a
+                    id="singup-link"
+                      class="underlined main-color-one-color fw-bold"
+                      href='{% url "home" %}'
+                      >خانه</a
+                    >
+                    برگردید؟
+                  </p>
+                  
                   <p class="loginTermsDesc mt-3">
                     با ورود و یا ثبت نام در سانیار شما
                     <a
