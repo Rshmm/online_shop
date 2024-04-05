@@ -124,7 +124,7 @@
                     <a
                     id="singup-link"
                       class="underlined main-color-one-color fw-bold"
-                      href="{% url "account:singup" %}"
+                      href='{% url "account:signup" %}'
                       >ثبت نام</a
                     >
                     کنید
@@ -375,7 +375,7 @@
       });
 
       const params = new URLSearchParams(document.location.search);
-      document.getElementById("singup-link").href = "{% url 'account:singup' %}?next=" + params.get("next"); 
+      document.getElementById("singup-link").href = "{% url "account:signup" %}?next=" + params.get("next"); 
     </script>
     <!-- ===== end new update -->
   </body>
