@@ -58,23 +58,13 @@ class Address(models.Model):
 
     user =models.ForeignKey(User, on_delete=models.CASCADE,null=True)
     title=models.CharField(null=True,max_length=50)
-    recipient_first_name=models.CharField(
+    recipient_full_name=models.CharField(
         null=True,
-        max_length=25,
+        max_length=35,
         # validators=[
         #     RegexValidator(
         #         regex='^[a-zA-Z]$',
         #         message="Enter a valid  first_name in the format a-z A-Z"
-        #     )
-        # ]
-        )
-    recipiemt_last_name=models.CharField(
-        null=True,
-        max_length=25,
-        # validators=[
-        #         RegexValidator(
-        #             regex='^[a-zA-Z]$',
-        #             message="Enter a valid  last_name in the format a-z A-Z"
         #     )
         # ]
         )

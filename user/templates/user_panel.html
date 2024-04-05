@@ -241,7 +241,7 @@
                                 </figure>
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a href= class="dropdown-item"><i class="bi bi-house-door me-2"></i>پروفایل</a>
+                                <li><a href= class='{% url "profile" %}'><i class="bi bi-house-door me-2"></i>پروفایل</a>
                                 </li>
                                 <li><a href="" class="dropdown-item"><i class="bi bi-cart-check me-2"></i>سفارش های
                                         من</a></li>
@@ -257,12 +257,15 @@
                                         علاقه</a></li>
                                 <li><a href="" class="dropdown-item"><i class="bi bi-gift me-2"></i>کد های تخفیف
                                         من</a></li>
-                                        <form action="{% url 'logout' %}" method="post">
-                                            {% csrf_token %} #csrf_token is very important to have as this is POST request
-                                            <button type="submit" class="dropdown-item mct-hover">Logout</button>
-                                        </form>
-                                {% comment %} <li><a href='{% url "logout" %}' class="dropdown-item mct-hover"><i
-                                            class="bi bi-arrow-right-square me-2"></i>خروج از حساب کاربری</a></li> {% endcomment %}
+                                <form action='{% url "logout" %}' method="post">
+                                        {% csrf_token %}
+                                       <button
+                                               type="submit"
+                                               class="main-color-one-bg py-3 btn w-100 btnForm rounded-3"
+                                       >
+                                            خروج از حساب کاربری
+                                        </button>
+                                </form> 
                             </ul>
                         </div>
                     </div>
@@ -561,12 +564,7 @@
                         </div>
                     </div>
                     <div class="col-lg-3">
-                        <div class="d-flex align-items-center justify-content-end">
-                            <a href='{% url "home" %}'
-                                class="btn header-cart-toggle rounded-pill btn-white border-0 shadow-sm">خانه<i
-                                    class="bottom"></i></a>
-                           
-                        </div>
+                        
                     </div>
                 </div>
             </div>
@@ -583,11 +581,9 @@
                 <div class="container-fluid">
                     <nav aria-label="breadcrumb" class="my-lg-0 my-2">
                         <ol class="breadcrumb mb-0">
-                            <li class="breadcrumb-item"><a href="#" class="font-14 text-muted">خانه</a></li>
-                            <li class="breadcrumb-item"><a href="#" class="font-14 text-muted">فروشگاه</a></li>
-                            <li class="breadcrumb-item"><a href="#" class="font-14 text-muted">گوشی هوشمند</a></li>
-                            <li class="breadcrumb-item active main-color-one-color font-14" aria-current="page">گوشی
-                                شیائومی
+                            <li class="breadcrumb-item"><a href='{% url "home" %}' class="font-14 text-muted">خانه</a></li>
+                            <li class="breadcrumb-item active main-color-one-color font-14" aria-current="page">
+                                حساب کاربری
                             </li>
                         </ol>
                     </nav>
@@ -635,12 +631,11 @@
                                     <div class="profile-box">
                                         <nav class="navbar profile-box-nav">
                                             <ul class="navbar-nav flex-column">
-                                                <li class="nav-item active"><a href= class="nav-link">
+                                                <li class="nav-item active"><a href='{% url "profile" %}' class="nav-link">
                                                         <i class="bi bi-house-door"></i>پروفایل</a>
                                                 </li>
                                                 <li class="nav-item"><a href="" class="nav-link">
-                                                        <i class="bi bi-cart-check"></i>سفارش های من <span
-                                                            class="badge rounded-pill badge-spn">5</span></a>
+                                                        <i class="bi bi-cart-check"></i>سفارش های من </a>
                                                 </li>
                                                 <li class="nav-item"><a href='{% url "address"%}' class="nav-link">
                                                         <i class="bi bi-pin-map"></i>آدرس های من</a>
@@ -660,13 +655,16 @@
                                                 <li class="nav-item"><a href="" class="nav-link">
                                                         <i class="bi bi-gift"></i>کد های تخفیف من</a>
                                                 </li>
-                                                <form action='{% url "logout" %}' method="post">
-                                                    {% csrf_token %} 
-                                                    <button type="submit">خروج از حساب کاربری</button>
-                                                </form>
-                                                {% comment %} <li class="nav-item"><a href='{% url "logout" %}' class="nav-link">
-                                                        <i class="bi bi-arrow-right-square"></i>خروج از حساب کاربری</a>
-                                                </li> {% endcomment %}
+                                                 <form action='{% url "logout" %}' method="post">
+                                                    {% csrf_token %}
+                                                    <button
+                                                            type="submit"
+                                                             class="main-color-one-bg py-3 btn w-100 btnForm rounded-3"
+                                                    >
+                                                    خروج از حساب کاربری
+                                                </button>
+                                                </form> 
+                                                
                                             </ul>
                                         </nav>
                                     </div>
@@ -698,12 +696,11 @@
                                     <div class="profile-box">
                                         <nav class="navbar profile-box-nav">
                                             <ul class="navbar-nav flex-column">
-                                                <li class="nav-item active"><a href= class="nav-link">
+                                                <li class="nav-item"><a href='{% url "profile" %}' class="nav-link">
                                                         <i class="bi bi-house-door"></i>پروفایل</a>
                                                 </li>
                                                 <li class="nav-item"><a href="" class="nav-link">
-                                                        <i class="bi bi-cart-check"></i>سفارش های من <span
-                                                            class="badge rounded-pill badge-spn">5</span></a>
+                                                        <i class="bi bi-cart-check"></i>سفارش های من </a>
                                                 </li>
                                                 <li class="nav-item"><a href='{% url "address" %}' class="nav-link">
                                                         <i class="bi bi-pin-map"></i>آدرس های من</a>
@@ -723,12 +720,15 @@
                                                 <li class="nav-item"><a href="" class="nav-link">
                                                         <i class="bi bi-gift"></i>کد های تخفیف من</a>
                                                 </li>
-                                                {% comment %} <form action='{% url "logout" %}' method="post">
-                                                    <button type="submit" >Logout</button>
-                                                </form> {% endcomment %}
-                                                <li class="nav-item"><a href='{% url "logout" %}'class="nav-link">
-                                                    <i class="bi bi-arrow-right-square"></i>خروج از حساب کاربری</a>
-                                                </li>
+                                                 <form action='{% url "logout" %}' method="post">
+                                                    {% csrf_token %}
+                                                    <button
+                                                            type="submit"
+                                                             class="main-color-one-bg py-3 btn w-100 btnForm rounded-3"
+                                                    >
+                                                    خروج از حساب کاربری
+                                                </button>
+                                                </form> 
                                             </ul>
                                         </nav>
                                     </div>
@@ -771,8 +771,7 @@
                                                         </div>
                                                         <div class="col-10">
                                                             <h6 class="font-16 mb-0">
-                                                                سفارشات من <span
-                                                                class="badge rounded-pill badge-spn">5</span>
+                                                                سفارشات من 
                                                             </h6>
                                                         </div>
                                                     </div>
@@ -794,8 +793,7 @@
                                                         </div>
                                                         <div class="col-10">
                                                             <h6 class="font-16 mb-0">
-                                                                آدرس های من <span
-                                                                class="badge rounded-pill badge-spn">9</span>
+                                                                آدرس های من 
                                                             </h6>
                                                         </div>
                                                     </div>
@@ -817,8 +815,7 @@
                                                         </div>
                                                         <div class="col-10">
                                                             <h6 class="font-16 mb-0">
-                                                                حساب کاربری من <span
-                                                                class="badge rounded-pill badge-spn">2</span>
+                                                                حساب کاربری من 
                                                             </h6>
                                                         </div>
                                                     </div>
@@ -828,7 +825,8 @@
                                     </a>
                                 </div>
                                 <div class="col-lg-3 col-6 w-100-in-400">
-                                    <a href='{% url "logout" %}'>
+                                    
+                                    
                                         <div class="content-box">
                                             <div class="container-fluid">
                                                 <div class="item">
@@ -839,10 +837,15 @@
                                                             </div>
                                                         </div>
                                                         <div class="col-10">
-                                                            <h6 class="font-16 mb-0">
-                                                                خروج از حساب <span
-                                                                class="badge rounded-pill badge-spn">5</span>
-                                                            </h6>
+                                                            <form action='{% url "logout" %}' method="post">
+                                                                {% csrf_token %}
+                                                                <button
+                                                                        type="submit"
+                                                                         class="main-color-one-bg py-3 btn w-100 btnForm rounded-3"
+                                                                >
+                                                                خروج از حساب کاربری
+                                                            </button>
+                                                            </form> 
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1076,10 +1079,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="footer-copy-right">
-                <p class="text-center mb-0"> طراحی و کدنویسی قالب توسط امیر رضایی انجام گرفته و تمامی حقوق
-                    مربوط به ایشان میباشد</p>
             </div>
         </div>
     </footer>

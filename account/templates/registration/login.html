@@ -46,11 +46,6 @@
       <div class="container-fluid h-100">
         <div class="col-lg-3">
           <div class="d-flex align-items-center justify-content-end">
-            <a
-              href='{% url "home" %}'
-              class="btn header-cart-toggle rounded-pill btn-blue border-5 shadow-sm"
-              >خانه<i class="bottom"></i
-            ></a>
           </div>
         </div>
         <div class="auth h-100 d-flex align-items-center">
@@ -124,12 +119,23 @@
                     <a
                     id="singup-link"
                       class="underlined main-color-one-color fw-bold"
-                      href="{% url "account:singup" %}"
+                      href='{% url "account:signup" %}'
                       >ثبت نام</a
                     >
                     کنید
                   </p>
 
+                  <p class="loginTermsDesc mt-3">
+                    می خواهید به
+                    <a
+                    id="singup-link"
+                      class="underlined main-color-one-color fw-bold"
+                      href='{% url "home" %}'
+                      >خانه</a
+                    >
+                    برگردید؟
+                  </p>
+                  
                   <p class="loginTermsDesc mt-3">
                     با ورود و یا ثبت نام در سانیار شما
                     <a
@@ -375,7 +381,7 @@
       });
 
       const params = new URLSearchParams(document.location.search);
-      document.getElementById("singup-link").href = "{% url 'account:singup' %}?next=" + params.get("next"); 
+      document.getElementById("singup-link").href = "{% url "account:signup" %}?next=" + params.get("next"); 
     </script>
     <!-- ===== end new update -->
   </body>
