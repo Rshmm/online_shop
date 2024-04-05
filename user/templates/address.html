@@ -558,12 +558,6 @@
                     </div>
                 </div>
                 <div class="col-lg-3">
-                    <div class="d-flex align-items-center justify-content-end">
-                        <a href='{% url "home" %}'
-                            class="btn header-cart-toggle rounded-pill btn-white border-0 shadow-sm">خانه<i
-                                class="bottom"></i></a>
-                       
-                    </div>
                 </div>
             </div>
         </div>
@@ -580,11 +574,11 @@
             <div class="container-fluid">
                 <nav aria-label="breadcrumb" class="my-lg-0 my-2">
                     <ol class="breadcrumb mb-0">
-                        <li class="breadcrumb-item"><a class="font-14 text-muted" href="#">خانه</a></li>
-                        <li class="breadcrumb-item"><a class="font-14 text-muted" href="#">فروشگاه</a></li>
-                        <li class="breadcrumb-item"><a class="font-14 text-muted" href="#">گوشی هوشمند</a></li>
-                        <li aria-current="page" class="breadcrumb-item active main-color-one-color font-14">گوشی
-                            شیائومی
+                        <li class="breadcrumb-item"><a class="font-14 text-muted" href='{% url "home" %}'>خانه</a></li>
+                        <li class="breadcrumb-item"><a class="font-14 text-muted" href='{% url "user_panel" %}'>حساب کاربری</a></li>
+                        
+                        <li aria-current="page" class="breadcrumb-item active main-color-one-color font-14">
+                            آدرس های من
                         </li>
                     </ol>
                 </nav>
