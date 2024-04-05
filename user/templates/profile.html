@@ -258,8 +258,15 @@
                                 علاقه</a></li>
                             <li><a class="dropdown-item" href=""><i class="bi bi-gift me-2"></i>کد های تخفیف
                                 من</a></li>
-                            <li><a class="dropdown-item mct-hover" href=""><i
-                                    class="bi bi-arrow-right-square me-2"></i>خروج از حساب کاربری</a></li>
+                                <form action='{% url "logout" %}' method="post">
+                                    {% csrf_token %}
+                                    <button
+                                            type="submit"
+                                             class="main-color-one-bg py-3 btn w-100 btnForm rounded-3"
+                                    >
+                                    خروج از حساب کاربری
+                                </button>
+                                </form> 
                         </ul>
                     </div>
                 </div>
@@ -581,7 +588,7 @@
             <div class="container-fluid">
                 <nav aria-label="breadcrumb" class="my-lg-0 my-2">
                     <ol class="breadcrumb mb-0">
-                        <li class="breadcrumb-item"><a class="font-14 text-muted" href="#">خانه</a></li>
+                        <li class="breadcrumb-item"><a class="font-14 text-muted" href='{% url "home" %}'>خانه</a></li>
                         <li class="breadcrumb-item"><a class="font-14 text-muted" href="#">فروشگاه</a></li>
                         <li class="breadcrumb-item"><a class="font-14 text-muted" href="#">گوشی هوشمند</a></li>
                         <li aria-current="page" class="breadcrumb-item active main-color-one-color font-14">گوشی
@@ -658,9 +665,15 @@
                                             <li class="nav-item"><a class="nav-link" href="">
                                                 <i class="bi bi-gift"></i>کد های تخفیف من</a>
                                             </li>
-                                            <li class="nav-item"><a class="nav-link" href="">
-                                                <i class="bi bi-arrow-right-square"></i>خروج از حساب کاربری</a>
-                                            </li>
+                                            <form action='{% url "logout" %}' method="post">
+                                                {% csrf_token %}
+                                                <button
+                                                        type="submit"
+                                                         class="main-color-one-bg py-3 btn w-100 btnForm rounded-3"
+                                                >
+                                                خروج از حساب کاربری
+                                            </button>
+                                            </form> 
                                         </ul>
                                     </nav>
                                 </div>
@@ -717,9 +730,15 @@
                                             <li class="nav-item"><a class="nav-link" href="">
                                                 <i class="bi bi-gift"></i>کد های تخفیف من</a>
                                             </li>
-                                            <li class="nav-item"><a class="nav-link" href="">
-                                                <i class="bi bi-arrow-right-square"></i>خروج از حساب کاربری</a>
-                                            </li>
+                                            <form action='{% url "logout" %}' method="post">
+                                                {% csrf_token %}
+                                                <button
+                                                        type="submit"
+                                                         class="main-color-one-bg py-3 btn w-100 btnForm rounded-3"
+                                                >
+                                                خروج از حساب کاربری
+                                            </button>
+                                            </form> 
                                         </ul>
                                     </nav>
                                 </div>
