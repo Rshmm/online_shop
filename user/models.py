@@ -8,12 +8,12 @@ User = get_user_model()
 # user = User.objects.last()
 # user.Address_set.all()
 
-class Profile(models.Model):
+class UserProfile(models.Model):
 
     user = models.OneToOneField(User , on_delete=models.CASCADE , null=True)
 
 
-    fisrt_name=models.CharField(
+    first_name=models.CharField(
         null=True,
         max_length=25,
         # validators=[
