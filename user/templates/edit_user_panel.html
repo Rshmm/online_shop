@@ -734,51 +734,55 @@
                     <div class="col-lg-9">
                         <div class="content-box">
                             <div class="container-fluid">
-                                <form action="">
-                                    <div class="form-group title-panel">
-                                        <h6 class="font-16">
-                                            ویرایش اطلاعات کاربری
-                                        </h6>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-floating mb-3">
-                                                    <input type="text" class="form-control float-input"
-                                                        id="floatingInputFname" placeholder="نام خود را وارد کنید">
-                                                    <label for="floatingInputFname">نام خود را وارد کنید</label>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-floating mb-3">
-                                                    <input type="text" class="form-control float-input"
-                                                        id="floatingInputLname"
-                                                        placeholder="نام خانوادگی خود را وارد کنید">
-                                                    <label for="floatingInputLname">نام خانوادگی خود را وارد
-                                                        کنید</label>
-                                                </div>
-                                            </div>
+                                <div class="form-group title-panel">
+                                    <h6 class="font-16">
+                                        ویرایش اطلاعات کاربری
+                                    </h6>
+                                </div>
+                                <form action="/profile/" method='post'>
+                                   
+                                <div class="row">
+                                    <div class="col-md-6">    
+                                        <div class="form-floating mb-3">
+                                            <input type="text" class="form-control float-input" placeholder="{{ form.first_name.help_text }}"
+                                                id="{{ form.first_name.name }}"  name="{{ form.first_name.name }}" >
+                                            <label >{{ form.first_name.label }}</label>
                                         </div>
-                                    </div>
-                                    <div class="form-floating mb-3">
-                                        <input type="text" class="form-control float-input" id="floatingInputStreet"
-                                            placeholder="تلفن همراه">
-                                        <label for="floatingInputStreet">تلفن همراه</label>
-                                    </div>
-                                    <div class="form-floating mb-3">
-                                        <input type="text" class="form-control float-input" id="floatingInputMobile"
-                                            placeholder="کد ملی">
-                                        <label for="floatingInputMobile">کد ملی</label>
-                                    </div>
-                                    <div class="form-floating mb-3">
-                                        <input type="text" class="form-control float-input" id="floatingInputEmail"
-                                            placeholder="ایمیل">
-                                        <label for="floatingInputEmail">ایمیل</label>
-                                    </div>
+                                    </div>    
+                                    <div class="col-md-6">    
+                                        <div class="form-floating mb-3">
+                                            <input type="text" class="form-control float-input" placeholder="{{ form.last_name.help_text }}
+                                                id="{{ form.last_name.name }}"  name="{{ form.last_name.name }}" >
+                                            <label >{{ form.last_name.label }}</label>
+                                        </div>
+                                    </div> 
+                                </div> 
+                                <div class="row">
+                                    <div class="col-md-6">    
+                                        <div class="form-floating mb-3">
+                                            <input type="text" class="form-control float-input" placeholder="{{ form.phone_number.help_text }}
+                                                id="{{ form.phone_number.name }}"  name="{{ form.phone_number.name }}" >
+                                            <label >{{ form.phone_number.label }}</label>
+                                        </div>
+                                    </div>    
+                                    <div class="col-md-6">    
+                                        <div class="form-floating mb-3">
+                                            <input type="text" class="form-control float-input" placeholder="{{ form.national_code.help_text }}
+                                                id="{{ form.national_code.name }}"  name="{{ form.national_code.name }}" >
+                                            <label >{{ form.national_code.label }}</label>
+                                        </div>
+                                    </div> 
+                                </div>  
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control float-input" placeholder="{{ form.email_address.help_text }}
+                                        id="{{ form.email_address.name }}"  name="{{ form.email_address.name }}" >
+                                    <label >{{ form.email_address.label }}</label>
+                                </div>
+                            </div>             
+                                    
                                     <div class="mb-2">
-                                        <button type="submit"
-                                            class="btn border-0 main-color-one-bg waves-effect waves-light py-2 px-5"><i class="bi bi-pencil-square text-white me-1"></i> ویرایش</button>
-                                    </div>
+                                        <button type="submit" class="btn border-0 main-color-one-bg waves-effect waves-light py-2 px-5"><i class="bi bi-pencil-square text-white me-1"></i>ویرایش</button>
+                                         {% csrf_token %}
                                 </form>
                             </div>
                         </div>

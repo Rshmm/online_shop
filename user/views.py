@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
+from user.forms import ProfileForm
 
 
 @login_required
@@ -20,7 +21,10 @@ def Userpanel(request):
 
 @login_required
 def edit_user_panel(request):
-    return render(request,'edit_user_panel.html')
+    form = ProfileForm()
+    return render(request,'edit_user_panel.html', {
+        'form': form
+    })
 
 def Home(request):
     return render(request, 'home.html')
