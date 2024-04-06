@@ -22,6 +22,7 @@ from user import views
 
 urlpatterns = [
     path('panel/', views.Userpanel, name="user_panel"),
+    path('edit-user-panel/',views.edit_user_panel, name="edit_user_panel"),
     path('profile/',views.Profile , name="profile"),
     path('address/' , views.Address , name="address"),
     path('createaddress/',views.Createaddress , name="address-create")

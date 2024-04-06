@@ -18,5 +18,9 @@ def Createaddress(request):
 def Userpanel(request):
     return render(request,'user_panel.html')
 
+@login_required
+def edit_user_panel(request):
+    return render(request,'edit_user_panel.html')
+
 def Home(request):
     return render(request, 'home.html')
