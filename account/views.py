@@ -15,18 +15,19 @@ class SignUpView(CreateView):
     def get(self, request, *args, **kwargs):
         return super().get(request, *args, **kwargs)
     
-
-    @create_view_logout_required('/')
-    def get(self, request, *args, **kwargs):
-        return super().get(request, *args, **kwargs)
-    
-
     def form_valid(self, form):
         valid = super().form_valid(form)
         username, password = form.cleaned_data['username'], form.cleaned_data['password1']
         new_user = authenticate(username=username, password=password)
         login(self.request, new_user)
         return valid
+    
+
+    @create_view_logout_required('/')
+    def post(self, request, *args, **kwargs):
+        return super().post(request, *args, **kwargs)
+    
+
     
     def get_success_url(self, **kwargs):
         next_page = self.request.GET.get('next')
