@@ -14,6 +14,12 @@ class SignUpView(CreateView):
     @create_view_logout_required('/')
     def get(self, request, *args, **kwargs):
         return super().get(request, *args, **kwargs)
+    
+
+    @create_view_logout_required('/')
+    def get(self, request, *args, **kwargs):
+        return super().get(request, *args, **kwargs)
+    
 
     def form_valid(self, form):
         valid = super().form_valid(form)
