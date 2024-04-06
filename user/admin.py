@@ -11,7 +11,7 @@ User = get_user_model()
 
 
 class ProfileInLine(admin.StackedInline):
-    model = Profile
+    model = UserProfile
 
 
 class AddressInLine(admin.StackedInline):
