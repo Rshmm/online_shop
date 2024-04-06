@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="FA-IR" dir="rtl">
 
@@ -6,19 +7,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>قالب سانیار</title>
-    <link rel="stylesheet" href="assets/css/bootstrap.rtl.min.css">
-    <link rel="stylesheet" href="assets/font/bootstrap-icon/bootstrap-icons.css">
-    <link rel="stylesheet" href="assets/plugin/waves/waves.min.css">
-    <link rel="stylesheet" href="assets/plugin/swiper/swiper-bundle.min.css">
-    <link rel="stylesheet" href="assets/plugin/timer/timer.css">
-    <link rel="stylesheet" href="assets/plugin/bootstrap-touchspin/jquery.bootstrap-touchspin.min.css">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/responsive.css">
+    <link rel="stylesheet" href='{% static "user/assets/css/bootstrap.rtl.min.css" %}'>
+    <link rel="stylesheet" href='{% static "user/assets/font/bootstrap-icon/bootstrap-icons.css" %}'>
+    <link rel="stylesheet" href='{% static "user/assets/plugin/waves/waves.min.css" %}'>
+    <link rel="stylesheet" href='{% static "user/assets/plugin/swiper/swiper-bundle.min.css" %}'>
+    <link rel="stylesheet" href='{% static "user/assets/plugin/timer/timer.css" %}'>
+    <link rel="stylesheet" href='{% static "user/assets/plugin/bootstrap-touchspin/jquery.bootstrap-touchspin.min.css" %}'>
+    <link rel="stylesheet" href='{% static "user/assets/css/style.css" %}'>
+    <link rel="stylesheet" href='{% static "user/assets/css/responsive.css" %}'>
 
 </head>
 
-<body>
-
+<body
     <header>
         <div class="container-fluid">
             <div class="row align-items-center">
@@ -41,7 +41,7 @@
                                 </div>
                                 <div class="offcanvas-body">
                                     <a href="" class="text-center d-block mb-3">
-                                        <img src="assets/image/logo.png" alt="" class="img-fluid" width="200">
+                                        <img src='{% static "user/assets/image/logo.png" %}' alt="" class="img-fluid" width="200">
                                     </a>
                                     <div class="header-bottom-form mb-4 w-100">
                                         <div class="search-form">
@@ -215,7 +215,7 @@
                         </div>
                         <a href="index.html">
                             <div class="logo">
-                                <img src="assets/image/logo.png" alt="" class="img-fluid">
+                                <img src='{% static "user/assets/image/logo.png" %}' alt="" class="img-fluid">
                             </div>
                         </a>
                     </div>
@@ -237,7 +237,7 @@
                             <a href="#register" data-bs-toggle="dropdown" aria-expanded="false" role="button"
                                 class="btn btn-white header-register border-0 rounded-pill">
                                 <figure class="avatar">
-                                    <img src="assets/image/user.png" alt="amirRezae">
+                                    <img src='{% static "user/assets/image/user.png" %}' alt="amirRezae">
                                 </figure>
                             </a>
                             <ul class="dropdown-menu">
@@ -641,7 +641,7 @@
                                 <div class="container-fluid">
                                     <div class="panel-box">
                                         <div class="d-flex align-items-center">
-                                            <img src="assets/image/user.png"
+                                            <img src='{% static "user/assets/image/user.png" %}'
                                                 class="img-fluid img-profile-panel rounded-circle me-3 shadow-md" alt="">
                                             <div class="d-grid gap-2">
                                                 <h6 class="font-14 main-color-one-color">حساب کاربری من</h6>
@@ -700,7 +700,7 @@
                                 <div class="container-fluid">
                                     <div class="panel-box">
                                         <div class="d-flex align-items-center">
-                                            <img src="assets/image/user.png"
+                                            <img src='{% static "user/assets/image/user.png" %}'
                                                 class="img-fluid img-profile-panel rounded-circle me-3 shadow-md" alt="">
                                             <div class="d-grid gap-2">
                                                 <h6 class="font-14 main-color-one-color">حساب کاربری من</h6>
@@ -923,7 +923,7 @@
                 <div class="row gy-3">
                     <div class="col-lg-9">
                         <div class="footer-menu-text">
-                            <img src="assets/image/logo.png" class="img-fluid" alt="">
+                            <img src='{% static "user/assets/image/logo.png" %}' class="img-fluid" alt="">
                             <p class="text-justify mb-2">
                                 لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک
                                 است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط
@@ -941,10 +941,10 @@
                     <div class="col-lg-3">
                         <div class="footer-namad">
                             <a href="">
-                                <img src="assets/image/enamad.png" alt="" class="img-thumbnail">
+                                <img src='{% static "user/assets/image/enamad.png" %}' alt="" class="img-thumbnail">
                             </a>
                             <a href="">
-                                <img src="assets/image/rezi.png" alt="" class="img-thumbnail">
+                                <img src='{% static "user/assets/image/rezi.png" %}' alt="" class="img-thumbnail">
                             </a>
                         </div>
                     </div>
@@ -956,7 +956,7 @@
             </div>
         </div>
     </footer>
-
+ 
     <!-- end footer -->
 
     <!-- mobile menu -->
@@ -1007,7 +1007,7 @@
                     <div class="row gy-2">
                         <div class="col-4">
                             <div class="image">
-                                <img src="assets/image/product/laptop-1.jpg" alt="" class="img-fluid">
+                                <img src='{% static "user/assets/image/product/laptop-1.jpg" %}' alt="" class="img-fluid">
                             </div>
                         </div>
                         <div class="col-8">
@@ -1038,7 +1038,7 @@
                     <div class="factor">
                         <div class="title">
                             <div class="d-flex align-items-center">
-                                <img src="assets/image/shopping-bag.png" class="img-fluid" alt="">
+                                <img src='{% static "user/assets/image/shopping-bag.png" %}' class="img-fluid" alt="">
                                 <h6 class="font-16">سفارش شما</h6>
                             </div>
                         </div>
@@ -1090,21 +1090,21 @@
         </div>
     </div>
 
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/plugin/waves/waves.min.js"></script>
-    <script src="assets/plugin/swiper/swiper-bundle.min.js"></script>
-    <script src="assets/plugin/timer/timer.js"></script>
-    <script src="assets/plugin/bootstrap-touchspin/jquery.bootstrap-touchspin.min.js"></script>
-    <script src="assets/js/app.js"></script>
-    <script src="assets/js/jquery-app.js"></script>
+    <script src='{% static "user/assets/js/jquery.min.js" %}'></script>
+    <script src='{% static "user/assets/js/bootstrap.bundle.min.js" %}'></script>
+    <script src='{% static "user/assets/plugin/waves/waves.min.js" %}'></script>
+    <script src='{% static "user/assets/plugin/swiper/swiper-bundle.min.js" %}'></script>
+    <script src='{% static "user/assets/plugin/timer/timer.js" %}'></script>
+    <script src='{% static "user/assets/plugin/bootstrap-touchspin/jquery.bootstrap-touchspin.min.js" %}'></script>
+    <script src='{% static "user/assets/js/app.js" %}'></script>
+    <script src='{% static "user/assets/js/jquery-app.js" %}'></script>
 
     <!-- ===== start new update -->
-    <script src="assets/plugin/go-to-top/script.js"></script>
-    <script src="assets/plugin/rasta-contact/script.js"></script>
+    <script src='{% static "user/assets/plugin/rasta-contact/script.js" %}'></script>
+    <script src='{% static "user/assets/plugin/go-to-top/script.js" %}'></script>
 
-    <link rel="stylesheet" href="assets/plugin/go-to-top/style.css">
-    <link rel="stylesheet" href="assets/plugin/rasta-contact/style.css">
+    <link rel="stylesheet" href='{% static "user/assets/plugin/go-to-top/style.css" %}'>
+    <link rel="stylesheet" href='{% static "user/assets/plugin/rasta-contact/style.css" %}'>
 
     <script>
         //// config floating contact
