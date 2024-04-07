@@ -1,7 +1,7 @@
 from django.db.models.signals import post_save
 from django.contrib.auth import get_user_model
 from django.dispatch import receiver
-from user.models import UserProfile
+from user.models import UserProfile,UserAddress
 
 User = get_user_model()
 
@@ -9,5 +9,6 @@ User = get_user_model()
 def user_setup_after_singup(sender, instance, created, **kwargs):
     if created:
         UserProfile.objects.create(user=instance)
+        UserAddress.objects.create(user=instance)
 
 
