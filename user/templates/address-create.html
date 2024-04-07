@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta content="IE=edge" http-equiv="X-UA-Compatible">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>New Address</title>
+    <title>ثبت آدرس</title>
     <link href='{% static "user/assets/css/bootstrap.rtl.min.css" %}' rel="stylesheet">
     <link href='{% static "user/assets/font/bootstrap-icon/bootstrap-icons.css" %}' rel="stylesheet">
     <link href='{% static "user/assets/plugin/waves/waves.min.css" %}' rel="stylesheet">
@@ -733,89 +733,80 @@
                                         </h4>
                                     </div>
                                 </div>
-                                <div class="ui-box-item-desc">
-                                    <form action="">
-                                        <div class="row g-3">
+                                <div class="ui-box-item-desc"> 
+                                    <form method="post">
+                                        <div class="row">
+                                            <div class="col-md-6">    
+                                                <div class="form-floating mb-3">
+                                                    <input type="text" class="form-control float-input" placeholder="{{ form.title.help_text }}"
+                                                        id="{{ form.title.name }}"  name="{{ form.title.name }}" >
+                                                    <label >{{ form.title.label }}</label>
+                                                </div>
+                                            </div>    
+                                            <div class="col-md-6">    
+                                                <div class="form-floating mb-3">
+                                                    <input type="text" class="form-control float-input" placeholder="{{ form.recipient_full_name.help_text }}"
+                                                        id="{{ form.recipient_full_name.name }}"  name="{{ form.recipient_full_name.name }}" >
+                                                    <label >{{ form.recipient_full_name.label }}</label>
+                                                </div>
+                                            </div> 
+                                        </div> 
+                                        <div class="row">
+                                            <div class="col-md-6">    
+                                                <div class="form-floating mb-3">
+                                                    <input type="text" class="form-control float-input" placeholder="{{ form.state.help_text }}"
+                                                        id="{{ form.state.name }}"  name="{{ form.state.name }}" >
+                                                    <label >{{ form.state.label }}</label>
+                                                </div>
+                                            </div>    
+                                            <div class="col-md-6">    
+                                                <div class="form-floating mb-3">
+                                                    <input type="text" class="form-control float-input" placeholder="{{ form.city.help_text }}"
+                                                        id="{{ form.city.name }}"  name="{{ form.city.name }}" >
+                                                    <label >{{ form.city.label }}</label>
+                                                </div>
+                                            </div> 
+                                        </div> 
+                                        <div class="row">
+                                            <div class="col-md-6">    
+                                                <div class="form-floating mb-3">
+                                                    <input type="text" class="form-control float-input" placeholder="{{ form.street.help_text }}"
+                                                        id="{{ form.street.name }}"  name="{{ form.street.name }}" >
+                                                    <label >{{ form.street.label }}</label>
+                                                </div>
+                                            </div>    
+                                            <div class="col-md-6">    
+                                                <div class="form-floating mb-3">
+                                                    <input type="text" class="form-control float-input" placeholder="{{ form.postal_code.help_text }}"
+                                                        id="{{ form.postal_code.name }}"  name="{{ form.postal_code.name }}" >
+                                                    <label >{{ form.postal_code.label }}</label>
+                                                </div>
+                                            </div> 
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">    
+                                                <div class="form-floating mb-3">
+                                                    <input type="text" class="form-control float-input" placeholder="{{ form.building_number.help_text }}"
+                                                        id="{{ form.building_number.name }}"  name="{{ form.building_number.name }}" >
+                                                    <label >{{ form.building_number.label }}</label>
+                                                </div>
+                                            </div>    
+                                            <div class="col-md-6">    
+                                                <div class="form-floating mb-3">
+                                                    <input type="text" class="form-control float-input" placeholder="{{ form.building_unit_number.help_text }}"
+                                                        id="{{ form.building_unit_number.name }}"  name="{{ form.building_unit_number.name }}" >
+                                                    <label >{{ form.building_unit_number.label }}</label>
+                                                </div>
+                                            </div> 
+                                        </div>
                                             <div class="col-12">
-                                                <div class="comment-item mb-3">
-                                                    <input type="text" class="form-control" id="floatingInputStreet" placeholder="مثلا خانه یا محل کار ...">
-                                                    <label for="floatingInputStreet" class="form-label label-float fw-bold">
-                                                        عنوان آدرس
-                                                        </label>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="col-12">
-                                                    <div class="comment-item mb-3">
-                                                        <input type="text" class="form-control" id="floatingInputStreet">
-                                                        <label for="floatingInputStreet" class="form-label label-float fw-bold">
-                                                            نام و نام خانوادگی تحویل گیرنده
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="col-12">
-                                                    <div class="comment-item mb-3">
-                                                        <input type="text" class="form-control" id="floatingInputStreet" >
-                                                        <label for="floatingInputStreet" class="form-label label-float fw-bold">
-                                                            استان 
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="col-12">
-                                                    <div class="comment-item mb-3">
-                                                        <input type="text" class="form-control" id="floatingInputStreet" >
-                                                        <label for="floatingInputStreet" class="form-label label-float fw-bold">
-                                                            شهر 
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="col-12">
-                                                    <div class="comment-item mb-3">
-                                                        <input type="text" class="form-control" id="floatingInputStreet" >
-                                                        <label for="floatingInputStreet" class="form-label label-float fw-bold">
-                                                            خیابان
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="col-12">
-                                                    <div class="comment-item mb-3">
-                                                        <input type="text" class="form-control" id="floatingInputStreet" >
-                                                        <label for="floatingInputStreet" class="form-label label-float fw-bold">
-                                                            کد پستی 
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="col-12">
-                                                    <div class="comment-item mb-3">
-                                                        <input type="text" class="form-control" id="floatingInputStreet" >
-                                                        <label for="floatingInputStreet" class="form-label label-float fw-bold">
-                                                            پلاک 
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="col-12">
-                                                    <div class="comment-item mb-3">
-                                                        <input type="text" class="form-control" id="floatingInputStreet" >
-                                                        <label for="floatingInputStreet" class="form-label label-float fw-bold">
-                                                            واحد  
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-12">
-                                                <button type="submit" class="btn main-color-one-bg my-3 border-0 px-5 py-3">ثبت آدرس</button>
+                                                <button
+                                                type="submit"
+                                                class="main-color-one-bg py-3 btn w-100 btnForm rounded-3"
+                                                >
+                                                ذخیره
+                                                </button>
+                                                {% csrf_token %}
                                             </div>
 
                                         </div>

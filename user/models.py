@@ -54,7 +54,7 @@ class UserProfile(models.Model):
     national_code = models.CharField(null=True,max_length=14)
 
 
-class Address(models.Model):
+class UserAddress(models.Model):
 
     user =models.ForeignKey(User, on_delete=models.CASCADE,null=True)
     title=models.CharField(null=True,max_length=50)

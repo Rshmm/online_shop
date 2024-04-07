@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta content="IE=edge" http-equiv="X-UA-Compatible">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>Profile</title>
+    <title>پروفایل</title>
     <link href='{% static "user/assets/css/bootstrap.rtl.min.css" %}' rel="stylesheet">
     <link href='{% static "user/assets/font/bootstrap-icon/bootstrap-icons.css" %}' rel="stylesheet">
     <link href='{% static "user/assets/plugin/waves/waves.min.css" %}' rel="stylesheet">
@@ -758,30 +758,32 @@
                                 <div class="ui-box-item-desc p-0">
                                     <table class="table main-table shadow-none main-table-2">
                                         <tbody><tr>
+                                            
                                             <td colspan="2" class="text-start p-3">
-                                                <h6>نام و نام خانوادگی</h6>
-                                                <p class="mt-2"></p>
+                                                <h6>نام </h6>
+                                                <p class="mt-2">{{ user.userprofile.first_name }}</p>
+                                            </td>
+                                            <td colspan="2" class="text-start p-3">
+                                                <h6>نام خانوادگی </h6>
+                                                <p class="mt-2">{{ user.userprofile.last_name }}</p>
                                             </td>
                                             <td colspan="2" class="text-start p-3">
                                                 <h6>شماره تلفن</h6>
-                                                <p class="mt-2">09165550000</p>
+                                                <p class="mt-2">{{ user.userprofile.phone_number }}</p>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td colspan="2" class="text-start p-3">
                                                 <h6>پست الکترونیک</h6>
-                                                <p class="mt-2">Amir@gmail.com</p>
+                                                <p class="mt-2">{{ user.userprofile.email_address }}</p>
                                             </td>
                                             <td colspan="2" class="text-start p-3">
                                                 <h6>کد ملی</h6>
-                                                <p class="mt-2">61400011133322</p>
+                                                <p class="mt-2">{{ user.userprofile.national_code }}</p>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td colspan="2" class="text-start p-3">
-                                                <h6>عضویت</h6>
-                                                <p class="mt-2">8 آبان 1401</p>
-                                            </td>
+                                           
                                         </tbody>
                                     </table>
                                 </div>
