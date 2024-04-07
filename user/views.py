@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from user.forms import ProfileForm, AddressForm
-from user.models import UserProfile
+from user.models import UserProfile,UserAddress
 
 @login_required
 def Profile(request):
@@ -13,7 +13,27 @@ def Address(request):
 
 @login_required
 def Createaddress(request):
-    form = AddressForm()
+    
+    if request.method == "POST":
+        form = AddressForm(request.POST)
+        # check whether it's valid:
+        if form.is_valid():
+
+            address = UserAddress.objects.get(user=request.user)
+            address.title = form.cleaned_data['title']
+            address.recipient_full_name = form.cleaned_data['recipient_full_name']
+            address.state = form.cleaned_data['state']
+            address.city = form.cleaned_data['city']
+            address.street = form.cleaned_data['street']
+            address.postal_code = form.cleaned_data['postal_code']
+            address.building_number = form.cleaned_data['building_number']
+            address.building_unit_number = form.cleaned_data['building_unit_number']
+            address.save()
+            
+
+
+    else:
+        form = AddressForm()
     return render(request,'address-create.html', {
         'form': form
     })
