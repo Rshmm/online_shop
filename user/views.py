@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-from user.forms import ProfileForm
+from user.forms import ProfileForm, AddressForm
 from user.models import UserProfile
 
 @login_required
@@ -13,7 +13,10 @@ def Address(request):
 
 @login_required
 def Createaddress(request):
-    return render(request,'address-create.html')
+    form = AddressForm()
+    return render(request,'address-create.html', {
+        'form': form
+    })
 
 @login_required
 def Userpanel(request):
