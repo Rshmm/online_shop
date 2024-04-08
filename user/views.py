@@ -2,6 +2,9 @@ from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from user.forms import ProfileForm, AddressForm
 from user.models import UserProfile,UserAddress
+from django.contrib import messages
+
+
 
 @login_required
 def Profile(request):
@@ -29,7 +32,10 @@ def Createaddress(request):
             address.building_number = form.cleaned_data['building_number']
             address.building_unit_number = form.cleaned_data['building_unit_number']
             address.save()
-            
+            messages.add_message(request, messages.SUCCESS ,"اطلاعات با موفقیت ذخیره شد")
+
+        else:
+            messages.add_message(request, messages.ERROR ,"لطفا فرم هارا پر کنید")
 
 
     else:
@@ -44,6 +50,7 @@ def Userpanel(request):
 
 @login_required
 def edit_user_panel(request):
+    
 
     if request.method == "POST":
         form = ProfileForm(request.POST)
@@ -56,6 +63,10 @@ def edit_user_panel(request):
             request.user.userprofile.email_address = form.cleaned_data['email_address']
             request.user.userprofile.national_code = form.cleaned_data['national_code']
             request.user.userprofile.save()
+            messages.add_message(request, messages.SUCCESS ,"اطلاعات با موفقیت ذخیره شد")
+        
+        else:
+            messages.add_message(request, messages.ERROR ,"لطفا فرم هارا پر کنید")
 
 
     else:

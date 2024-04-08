@@ -736,7 +736,7 @@
                                         <a class="btn main-color-one-bg btn-sm waves-effect waves-light" href='{% url "address-create" %}'>ثبت آدرس جدید <i class="bi text-white bi-plus-circle"></i></a>
                                     </div>
                                 </div>
-                                {{ user.useraddress.title }}
+                                
                                 <div class="ui-box-item-desc">
                                     <div class="orders">
                                         <div class="order-item">
@@ -766,12 +766,12 @@
                                                         <div class="text-muted mb-4 d-flex align-items-baseline mb-2">
                                                             <i class="bi bi-pin-map me-3"></i>
                                                             <h6 class="mb-0 font-15 fw-normal">آدرس:</h6>
-                                                            <p class="ms-2 font-16 mb-0">لرستان خرم آباد</p>
+                                                            <p class="ms-2 font-16 mb-0">{{ user.useraddress.title }}</p>
                                                         </div>
                                                         <div class="text-muted mb-4 d-flex align-items-baseline mb-2">
                                                             <i class="bi bi-envelope me-3"></i>
                                                             <h6 class="mb-0 font-15">شماره تلفن:</h6>
-                                                            <p class="ms-2 font-16 mb-0">021123456789</p>
+                                                            <p class="ms-2 font-16 mb-0">{{ userddress.objects.get }}</p>
                                                         </div>
                                                         <div class="text-muted mb-4 d-flex align-items-baseline mb-2">
                                                             <i class="bi bi-phone me-3"></i>
