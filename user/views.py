@@ -35,7 +35,7 @@ def Createaddress(request):
             messages.add_message(request, messages.SUCCESS ,"اطلاعات با موفقیت ذخیره شد")
 
         else:
-            messages.add_message(request, messages.ERROR ,"لطفا فرم هارا پر کنید")
+            messages.add_message(request, messages.ERROR ,"مشکلی وجود دارد به ارور توجه کنید یا لطفا تمامی فرم هارا پر کنید")
 
 
     else:
@@ -54,9 +54,7 @@ def edit_user_panel(request):
 
     if request.method == "POST":
         edituserpanelform = ProfileForm(request.POST)
-        # check whether it's valid:
         if edituserpanelform.is_valid():
-            
             request.user.userprofile.first_name = edituserpanelform.cleaned_data['first_name']
             request.user.userprofile.last_name = edituserpanelform.cleaned_data['last_name']
             request.user.userprofile.phone_number = edituserpanelform.cleaned_data['phone_number']
@@ -66,11 +64,11 @@ def edit_user_panel(request):
             messages.add_message(request, messages.SUCCESS ,"اطلاعات با موفقیت ذخیره شد")
         
         else:
-            messages.add_message(request, messages.ERROR ,"لطفا فرم هارا پر کنید")
+            messages.add_message(request, messages.ERROR ,"مشکلی وجود دارد به ارور توجه کنید یا لطفا تمامی فرم هارا پر کنید")
 
 
     else:
-        edituserpanelform = ProfileForm()
+        edituserpanelform = ProfileForm(initial=request.user.userprofile.__dict__)
     return render(request,'edit_user_panel.html', {
         'edituserpanelform': edituserpanelform
     })

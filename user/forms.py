@@ -5,7 +5,7 @@ class ProfileForm(forms.Form):
    first_name = forms.CharField(label=" نام خانوادگی خود را وارد کنید" , max_length=25,required=True)
    last_name = forms.CharField(label=" نام خانوادگی خود را وارد کنید" , max_length=25,required=True)
    phone_number = forms.CharField(label=" شماره تلفن خود را وارد کنید" , max_length=11,required=True)
-   email_address = forms.CharField(label="ایمیل خود را وارد کنید" , max_length=255,required=True)
+   email_address = forms.EmailField(label="ایمیل خود را وارد کنید" , max_length=255,required=True)
    national_code = forms.CharField(label= " کد ملی خود را وارد کنید" , max_length=14,required=True)
 
 

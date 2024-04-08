@@ -742,13 +742,16 @@
                                     </ul>
                                     {% endif %}
                                     <form method="post">
+                                        
                                         <div class="row">
                                             <div class="col-md-6">    
                                                 <div class="form-floating mb-3">
                                                     <input type="text" class="form-control float-input" placeholder="{{ Createaddressform.title.help_text }}"
                                                         id="{{ Createaddressform.title.name }}"  name="{{ Createaddressform.title.name }}" >
                                                     <label >{{ Createaddressform.title.label }}</label>
+                                                 
                                                 </div>
+                                               
                                             </div>    
                                             <div class="col-md-6">    
                                                 <div class="form-floating mb-3">
@@ -806,7 +809,7 @@
                                                 </div>
                                             </div> 
                                         </div>
-                                            <div class="col-12">
+                                            <div class="col-4">
                                                 <button
                                                 type="submit"
                                                 class="main-color-one-bg py-3 btn w-100 btnForm rounded-3"
