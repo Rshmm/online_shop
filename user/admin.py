@@ -15,7 +15,7 @@ class ProfileInLine(admin.StackedInline):
 
 
 class AddressInLine(admin.StackedInline):
-    model = UserAddress
+    model = Address
     extra = 0
 
 
