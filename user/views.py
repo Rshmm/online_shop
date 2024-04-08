@@ -1,9 +1,9 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from user.forms import ProfileForm, AddressForm
-from user.models import UserProfile,UserAddress
+from user.models import UserProfile,Address
 from django.contrib import messages
-
+from user.models import User
 
 
 @login_required
@@ -22,7 +22,7 @@ def Createaddress(request):
         # check whether it's valid:
         if Createaddressform.is_valid():
 
-            address = UserAddress.objects.get(user=request.user)
+            address = Address.objects.get(user=request.user)
             address.title = Createaddressform.cleaned_data['title']
             address.recipient_full_name = Createaddressform.cleaned_data['recipient_full_name']
             address.state = Createaddressform.cleaned_data['state']
@@ -35,11 +35,11 @@ def Createaddress(request):
             messages.add_message(request, messages.SUCCESS ,"اطلاعات با موفقیت ذخیره شد")
 
         else:
-            messages.add_message(request, messages.ERROR ,"لطفا فرم هارا پر کنید")
+            messages.add_message(request, messages.ERROR ,"مشکلی وجود دارد به ارور توجه کنید یا لطفا تمامی فرم هارا پر کنید")
 
 
     else:
-        Createaddressform = AddressForm()
+        Createaddressform = AddressForm(initial=request.user.address.__dict__)
     return render(request,'address-create.html', {
         'Createaddressform': Createaddressform
     })
@@ -54,9 +54,7 @@ def edit_user_panel(request):
 
     if request.method == "POST":
         edituserpanelform = ProfileForm(request.POST)
-        # check whether it's valid:
         if edituserpanelform.is_valid():
-            
             request.user.userprofile.first_name = edituserpanelform.cleaned_data['first_name']
             request.user.userprofile.last_name = edituserpanelform.cleaned_data['last_name']
             request.user.userprofile.phone_number = edituserpanelform.cleaned_data['phone_number']
@@ -66,11 +64,11 @@ def edit_user_panel(request):
             messages.add_message(request, messages.SUCCESS ,"اطلاعات با موفقیت ذخیره شد")
         
         else:
-            messages.add_message(request, messages.ERROR ,"لطفا فرم هارا پر کنید")
+            messages.add_message(request, messages.ERROR ,"مشکلی وجود دارد به ارور توجه کنید یا لطفا تمامی فرم هارا پر کنید")
 
 
     else:
-        edituserpanelform = ProfileForm()
+        edituserpanelform = ProfileForm(initial=request.user.userprofile.__dict__)
     return render(request,'edit_user_panel.html', {
         'edituserpanelform': edituserpanelform
     })
