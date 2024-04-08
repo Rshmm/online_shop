@@ -126,3 +126,13 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "/"
+
+from django.contrib import messages
+
+MESSAGE_TAGS = {
+    messages.DEBUG : 'alert-debug',
+    messages.INFO : 'alert-info',
+    messages.SUCCESS : 'alert-success',
+    messages.WARNING : 'alert-warning',
+    messages.ERROR : 'alert-danger'
+}
