@@ -22,17 +22,17 @@ def Createaddress(request):
         # check whether it's valid:
         if Createaddressform.is_valid():
 
-            address = Address.objects.get(user=request.user)
-            address.title = Createaddressform.cleaned_data['title']
-            address.recipient_full_name = Createaddressform.cleaned_data['recipient_full_name']
-            address.state = Createaddressform.cleaned_data['state']
-            address.city = Createaddressform.cleaned_data['city']
-            address.street = Createaddressform.cleaned_data['street']
-            address.postal_code = Createaddressform.cleaned_data['postal_code']
-            address.building_number = Createaddressform.cleaned_data['building_number']
-            address.building_unit_number = Createaddressform.cleaned_data['building_unit_number']
-            address.save()
-            messages.add_message(request, messages.SUCCESS ,"اطلاعات با موفقیت ذخیره شد")
+             address = request.user.address_set.first()
+             address.title = request.POST.get('title')
+             address.recipient_full_name = request.POST.get('recipient_full_name')
+             address.state = request.POST.get('state')
+             address.city = request.POST.get('city')
+             address.street = request.POST.get('street')
+             address.postal_code = request.POST.get('postal_code')
+             address.building_number = request.POST.get('building_number')
+             address.building_unit_number = request.POST.get('building_unit_number')
+             address.save()
+             messages.add_message(request, messages.SUCCESS ,"اطلاعات با موفقیت ذخیره شد")
 
         else:
             messages.add_message(request, messages.ERROR ,"مشکلی وجود دارد به ارور توجه کنید یا لطفا تمامی فرم هارا پر کنید")
@@ -55,11 +55,11 @@ def edit_user_panel(request):
     if request.method == "POST":
         edituserpanelform = ProfileForm(request.POST)
         if edituserpanelform.is_valid():
-            request.user.userprofile.first_name = edituserpanelform.cleaned_data['first_name']
-            request.user.userprofile.last_name = edituserpanelform.cleaned_data['last_name']
-            request.user.userprofile.phone_number = edituserpanelform.cleaned_data['phone_number']
-            request.user.userprofile.email_address = edituserpanelform.cleaned_data['email_address']
-            request.user.userprofile.national_code = edituserpanelform.cleaned_data['national_code']
+            request.user.userprofile.first_name = request.POST.get('first_name')
+            request.user.userprofile.last_name = request.POST.get('last_name')
+            request.user.userprofile.phone_number = request.POST.get('phone_number')
+            request.user.userprofile.email_address = request.POST.get('email_address')
+            request.user.userprofile.national_code = request.POST.get('national_code')
             request.user.userprofile.save()
             messages.add_message(request, messages.SUCCESS ,"اطلاعات با موفقیت ذخیره شد")
         
