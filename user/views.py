@@ -52,7 +52,9 @@ def Createaddress(request):
 
 
     else:
-        Createaddressform = AddressForm()
+        adrs = request.user.address_set.first()
+        data = adrs.__dict__ if adrs else {}
+        Createaddressform = AddressForm(initial=adrs)
     return render(request,'address-create.html', {
         'Createaddressform': Createaddressform
     })

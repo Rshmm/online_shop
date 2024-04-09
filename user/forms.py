@@ -4,15 +4,15 @@ from django import forms
 class ProfileForm(forms.Form):
    def __init__(self,*args, **kwargs):
       if 'initail' in kwargs: 
-         if kwargs['initial']['first_name'] == None:
+         if kwargs['initial']['first_name'] == '':
             kwargs['initial']['first_name'] == ''
-         if kwargs['initial']['last_name'] == None:
+         if kwargs['initial']['last_name'] == '':
             kwargs['initial']['last_name'] == ''
-         if kwargs['initial']['phone_number'] == None:
+         if kwargs['initial']['phone_number'] == '':
             kwargs['initial']['phone_number'] == ''
-         if kwargs['initial']['email_address'] == None:
+         if kwargs['initial']['email_address'] == '':
             kwargs['initial']['email_address'] ==''
-         if kwargs['initial']['national_code'] == None:
+         if kwargs['initial']['national_code'] == '':
             kwargs['initial']['national_code'] ==''
       super().__init__(*args, **kwargs)
       
