@@ -39,7 +39,7 @@ def Createaddress(request):
 
 
     else:
-        Createaddressform = AddressForm(initial=request.user.address.__dict__)
+        Createaddressform = AddressForm()
     return render(request,'address-create.html', {
         'Createaddressform': Createaddressform
     })
