@@ -21,8 +21,8 @@ def Createaddress(request):
         Createaddressform = AddressForm(request.POST)
         # check whether it's valid:
         if Createaddressform.is_valid():
-            address_exsits = request.user.address_set.exsits()
-            if address_exsits: 
+            address_exists = request.user.address_set.exists()
+            if address_exists: 
                 address = request.user.address_set.first()
                 address.title = request.POST.get('title')
                 address.recipient_full_name = request.POST.get('recipient_full_name')

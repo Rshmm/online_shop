@@ -2,6 +2,21 @@ from django import forms
 
 
 class ProfileForm(forms.Form):
+   def __init__(self,*args, **kwargs):
+      if 'initail' in kwargs: 
+         if kwargs['initial']['first_name'] == None:
+            kwargs['initial']['first_name'] == ''
+         if kwargs['initial']['last_name'] == None:
+            kwargs['initial']['last_name'] == ''
+         if kwargs['initial']['phone_number'] == None:
+            kwargs['initial']['phone_number'] == ''
+         if kwargs['initial']['email_address'] == None:
+            kwargs['initial']['email_address'] ==''
+         if kwargs['initial']['national_code'] == None:
+            kwargs['initial']['national_code'] ==''
+      super().__init__(*args, **kwargs)
+      
+
    first_name = forms.CharField(label=" نام خانوادگی خود را وارد کنید",
                                 max_length=25,
                                 required=True,
