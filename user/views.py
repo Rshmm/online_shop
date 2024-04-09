@@ -22,15 +22,15 @@ def Createaddress(request):
         # check whether it's valid:
         if Createaddressform.is_valid():
 
-            address = Address.objects.get(user=request.user)
-            address.title = Createaddressform.cleaned_data['title']
-            address.recipient_full_name = Createaddressform.cleaned_data['recipient_full_name']
-            address.state = Createaddressform.cleaned_data['state']
-            address.city = Createaddressform.cleaned_data['city']
-            address.street = Createaddressform.cleaned_data['street']
-            address.postal_code = Createaddressform.cleaned_data['postal_code']
-            address.building_number = Createaddressform.cleaned_data['building_number']
-            address.building_unit_number = Createaddressform.cleaned_data['building_unit_number']
+            address = request.user.address_set.first()
+            address.title = request.Post.get('title')
+            address.recipient_full_name = request.Post.get('recipient_full_name')
+            address.state = request.Post.get('state')
+            address.city = request.Post.get('city')
+            address.street = request.Post.get('street')
+            address.postal_code = request.Post.get('postal_code')
+            address.building_number = request.Post.get('building_number')
+            address.building_unit_number = request.Post.get('building_unit_number')
             address.save()
             messages.add_message(request, messages.SUCCESS ,"اطلاعات با موفقیت ذخیره شد")
 
@@ -39,7 +39,7 @@ def Createaddress(request):
 
 
     else:
-        Createaddressform = AddressForm(initial=request.user.address.__dict__)
+        Createaddressform = AddressForm()
     return render(request,'address-create.html', {
         'Createaddressform': Createaddressform
     })
