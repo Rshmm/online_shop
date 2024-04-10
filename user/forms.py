@@ -65,7 +65,10 @@ class AddressForm(forms.Form):
    state = forms.CharField(label=" نام استان محل زندگی خود را وارد کنید",
                            max_length = 50,
                            required=True,
-                           widget=forms.TextInput(attrs={"class":"form-control"})
+                           widget=forms.Textarea(attrs={
+                              "class":"form-control"
+                              }
+                              )
                            )
 
    city = forms.CharField(label="نام شهر محل زندگی خود را وارد کنید",

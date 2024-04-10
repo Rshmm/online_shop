@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-from django.forms import formset_factory
+from django.forms import formset_factory 
 from user.forms import ProfileForm, AddressForm
 from user.models import UserProfile,Address
 from django.contrib import messages
@@ -57,10 +57,10 @@ def Createaddress(request):
         adrs = request.user.address_set.first()
         data = adrs.__dict__ if adrs else {}
         # Createaddressform = AddressForm(initial=data)
-        CreateaddressFormSet= formset_factory(AddressForm, extra=5)
-        Create_address_form_set = CreateaddressFormSet()
+        CreateaddressFormSet= formset_factory(Createaddressform, extra=5)
+        Createaddressformset = CreateaddressFormSet()
     return render(request,'address-create.html', {
-        'Create_address_form_set': Create_address_form_set
+        'Createaddressformset': Createaddressformset
     })
 
 @login_required
@@ -94,3 +94,4 @@ def edit_user_panel(request):
 
 def Home(request):
     return render(request, 'home.html')
+
