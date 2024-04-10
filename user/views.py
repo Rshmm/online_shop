@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
+from django.forms import formset_factory
 from user.forms import ProfileForm, AddressForm
 from user.models import UserProfile,Address
 from django.contrib import messages
@@ -46,6 +47,7 @@ def Createaddress(request):
                 building_number = request.POST.get('building_number'),
                 building_unit_number =  request.POST.get('building_unit_number')
                 )
+                messages.add_message(request, messages.SUCCESS ,"اطلاعات با موفقیت ذخیره شد")
 
         else:
             messages.add_message(request, messages.ERROR ,"مشکلی وجود دارد به ارور توجه کنید یا لطفا تمامی فرم هارا پر کنید")
@@ -54,9 +56,11 @@ def Createaddress(request):
     else:
         adrs = request.user.address_set.first()
         data = adrs.__dict__ if adrs else {}
-        Createaddressform = AddressForm(initial=adrs)
+        # Createaddressform = AddressForm(initial=data)
+        CreateaddressFormSet= formset_factory(AddressForm, extra=5)
+        Create_address_form_set = CreateaddressFormSet()
     return render(request,'address-create.html', {
-        'Createaddressform': Createaddressform
+        'Create_address_form_set': Create_address_form_set
     })
 
 @login_required
