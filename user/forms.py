@@ -56,7 +56,7 @@ class AddressForm(forms.Form):
                            widget=forms.TextInput(attrs={"class":"form-control"})
                            )
 
-   recipient_full_name = forms.CharField(label="تام و نام خانوادگی تحویل گیرنده را وارد کنید ",
+   recipient_full_name = forms.CharField(label="نام و نام خانوادگی تحویل گیرنده را وارد کنید ",
                            max_length=35,
                            required=True,
                            widget=forms.TextInput(attrs={"class":"form-control"})
@@ -65,7 +65,7 @@ class AddressForm(forms.Form):
    state = forms.CharField(label=" نام استان محل زندگی خود را وارد کنید",
                            max_length = 50,
                            required=True,
-                           widget=forms.Textarea(attrs={
+                           widget=forms.TextInput(attrs={
                               "class":"form-control"
                               }
                               )
@@ -80,7 +80,7 @@ class AddressForm(forms.Form):
    street = forms.CharField(label="آدرس کامل محل زندگی خود را وارد کنید",
                            max_length = 50,
                            required=True,
-                           widget=forms.TextInput(attrs={"class":"form-control"})
+                           widget=forms.Textarea(attrs={"class":"form-control"})
                            )
 
    postal_code = forms.CharField(label="کد پستی خود را وارد کنید",

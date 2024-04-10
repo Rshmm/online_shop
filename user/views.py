@@ -17,51 +17,50 @@ def Address(request):
 
 @login_required
 def Createaddress(request):
-    
-    if request.method == "POST":
-        Createaddressform = AddressForm(request.POST)
-        # check whether it's valid:
-        if Createaddressform.is_valid():
-            address_exists = request.user.address_set.exists()
-            if address_exists: 
-                address = request.user.address_set.first()
-                address.title = request.POST.get('title')
-                address.recipient_full_name = request.POST.get('recipient_full_name')
-                address.state = request.POST.get('state')
-                address.city = request.POST.get('city')
-                address.street = request.POST.get('street')
-                address.postal_code = request.POST.get('postal_code')
-                address.building_number = request.POST.get('building_number')
-                address.building_unit_number = request.POST.get('building_unit_number')
-                address.save()
-                messages.add_message(request, messages.SUCCESS ,"اطلاعات با موفقیت ذخیره شد")
+        if request.method == "POST":
+            Createaddressform = AddressForm(request.POST)
+
+            if Createaddressform.is_valid():
+                address_exists = request.user.address_set.exists()
+                if address_exists: 
+                    address = request.user.address_set.first()
+                    address.title = request.POST.get('title')
+                    address.recipient_full_name = request.POST.get('recipient_full_name')
+                    address.state = request.POST.get('state')
+                    address.city = request.POST.get('city')
+                    address.street = request.POST.get('street')
+                    address.postal_code = request.POST.get('postal_code')
+                    address.building_number = request.POST.get('building_number')
+                    address.building_unit_number = request.POST.get('building_unit_number')
+                    address.save()
+                    messages.add_message(request, messages.SUCCESS ,"اطلاعات با موفقیت ذخیره شد")
+
+                else:
+                    request.user.address_set.create(
+                    title = request.POST.get('title'),
+                    recipient_full_name = request.POST.get('recipient_full_name'),
+                    state = request.POST.get('state'),
+                    city = request.POST.get('city'),
+                    street = request.POST.get('street'),
+                    postal_code = request.POST.get('postal_code'),
+                    building_number = request.POST.get('building_number'),
+                    building_unit_number =  request.POST.get('building_unit_number')
+                    )
+                    messages.add_message(request, messages.SUCCESS ,"اطلاعات با موفقیت ذخیره شد")
 
             else:
-                request.user.address_set.create(
-                title = request.POST.get('title'),
-                recipient_full_name = request.POST.get('recipient_full_name'),
-                state = request.POST.get('state'),
-                city = request.POST.get('city'),
-                street = request.POST.get('street'),
-                postal_code = request.POST.get('postal_code'),
-                building_number = request.POST.get('building_number'),
-                building_unit_number =  request.POST.get('building_unit_number')
-                )
-                messages.add_message(request, messages.SUCCESS ,"اطلاعات با موفقیت ذخیره شد")
+                messages.add_message(request, messages.ERROR ,"مشکلی وجود دارد به ارور توجه کنید یا لطفا تمامی فرم هارا پر کنید")
+
 
         else:
-            messages.add_message(request, messages.ERROR ,"مشکلی وجود دارد به ارور توجه کنید یا لطفا تمامی فرم هارا پر کنید")
-
-
-    else:
-        adrs = request.user.address_set.first()
-        data = adrs.__dict__ if adrs else {}
-        # Createaddressform = AddressForm(initial=data)
-        CreateaddressFormSet= formset_factory(Createaddressform, extra=5)
-        Createaddressformset = CreateaddressFormSet()
-    return render(request,'address-create.html', {
-        'Createaddressformset': Createaddressformset
-    })
+            adrs = request.user.address_set.first()
+            data = adrs.__dict__ if adrs else {}
+            # Createaddressform = AddressForm(initial=data)   
+            CreateaddressFormSet= formset_factory(AddressForm, extra=3)
+            Createaddressformset = CreateaddressFormSet()
+        return render(request,'address-create.html', {
+            'Createaddressformset': Createaddressformset
+        })
 
 @login_required
 def Userpanel(request):
