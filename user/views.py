@@ -19,6 +19,13 @@ def Address(request):
 def Createaddress(request):
         CreateaddressFormSet= formset_factory(AddressForm)
         if request.method == "POST":
+
+            form_set_key = [k for k in request.POST  if k.startswith('form-')]
+            unique_indexes = {k.split('-')[1] for k in form_set_key}
+            for unique_index in unique_indexes:
+                form_set_key = [k for k in request.POST if k.startswith('form-' + unique_index )]
+                print(form_set_key)
+
             Createaddressformset = CreateaddressFormSet(request.POST)
 
             if Createaddressformset.is_valid():
