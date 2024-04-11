@@ -1191,65 +1191,91 @@
 {% block extra_js%}
 <script>
     $(document).ready(function() {
-        const form = `
-        <div class="ui-box-item-desc">
-            <div>
-              <label for="id_form-2-title">عنوان آدرس خود را وارد کنید:</label>
-              <input type="text" name="form-2-title" class="form-control" maxlength="50" id="id_form-2-title">
-            </div>
-            <div>
-              <label for="id_form-2-recipient_full_name">نام و نام خانوادگی تحویل گیرنده را وارد کنید :</label>
-              <input type="text" name="form-2-recipient_full_name" class="form-control" maxlength="35" id="id_form-2-recipient_full_name">
-            </div>
-            <div>
-              <label for="id_form-2-state"> نام استان محل زندگی خود را وارد کنید:</label>
-              <input type="text" name="form-2-state" class="form-control" maxlength="50" id="id_form-2-state">
-            </div>
-            <div>
-              <label for="id_form-2-city">نام شهر محل زندگی خود را وارد کنید:</label>
-              <input type="text" name="form-2-city" class="form-control" maxlength="50" id="id_form-2-city">
-            </div>
-            <div>
-              <label for="id_form-2-street">آدرس کامل محل زندگی خود را وارد کنید:</label>
-              <textarea name="form-2-street" cols="40" rows="10" class="form-control" maxlength="50" id="id_form-2-street"></textarea>
-            </div>
-            <div>
-              <label for="id_form-2-postal_code">کد پستی خود را وارد کنید:</label>
-              <input type="text" name="form-2-postal_code" class="form-control" maxlength="50" id="id_form-2-postal_code">
-            </div>
-            <div>
-              <label for="id_form-2-building_number">پلاک ساختمان خود را وارد کنید:</label>
-              <input type="text" name="form-2-building_number" class="form-control" maxlength="50" id="id_form-2-building_number">
-            </div>
-            <div>
-              <label for="id_form-2-building_unit_number"> شماره واحد خود را وارد کنید:</label>
-              <input type="text" name="form-2-building_unit_number" class="form-control" maxlength="50" id="id_form-2-building_unit_number">
-            </div>
-        </div> 
-        `
-
-         $('#address-form-set').append(`
-         <div class="row exp-row">
-            <strong>آدرس شماره #1</strong>
-            ${form}
-         </div> 
-         `)
-
+        function getForm(index, formfield) {
+            const field = formfield?.fields
+            return `
+            <div class="ui-box-item-desc">
+                <div>
+                    <label for="id_form-${index}-title">عنوان آدرس خود را وارد کنید:</label>
+                    <input type="text" name="form-${index}-title" class="form-control" maxlength="50" id="id_form-${index}-title" 
+                    value ="${field?.title}" >
+                     
+                </div>
+                <div>
+                    <label for="id_form-${index}-recipient_full_name">نام و نام خانوادگی تحویل گیرنده را وارد کنید :</label>
+                    <input type="text" name="form-${index}-recipient_full_name" class="form-control" maxlength="35" id="id_form-${index}-recipient_full_name" 
+                    value="${field?.recipient_full_name}">
+                </div>
+                <div>
+                    <label for="id_form-${index}-state"> نام استان محل زندگی خود را وارد کنید:</label>
+                    <input type="text" name="form-${index}-state" class="form-control" maxlength="50" id="id_form-${index}-state" 
+                    value="${field?.state}">
+                </div>
+                <div>
+                    <label for="id_form-${index}-city">نام شهر محل زندگی خود را وارد کنید:</label>
+                    <input type="text" name="form-${index}-city" class="form-control" maxlength="50" id="id_form-${index}-city" 
+                    value="${field?.city}">
+                </div>
+                <div>
+                    <label for="id_form-${index}-street">آدرس کامل محل زندگی خود را وارد کنید:</label>
+                    <textarea name="form-${index}-street" cols="40" rows="10" class="form-control" maxlength="50" id="id_form-${index}-street" 
+                    value="${field?.street}"></textarea>
+                </div>
+                <div>
+                    <label for="id_form-${index}-postal_code">کد پستی خود را وارد کنید:</label>
+                    <input type="text" name="form-${index}-postal_code" class="form-control" maxlength="50" id="id_form-${index}-postal_code" 
+                    value="${field?.postal_code}">
+                </div>
+                <div>
+                    <label for="id_form-${index}-building_number">پلاک ساختمان خود را وارد کنید:</label>
+                    <input type="text" name="form-${index}-building_number" class="form-control" maxlength="50" id="id_form-${index}-building_number" 
+                    value="${field?.building_number}">
+                </div>
+                <div>
+                    <label for="id_form-${index}-building_unit_number"> شماره واحد خود را وارد کنید:</label>
+                    <input type="text" name="form-${index}-building_unit_number" class="form-control" maxlength="50" id="id_form-${index}-building_unit_number" 
+                    value="${field?.building_unit_number}">
+                </div>
+            </div>`
+            
+        } 
+        
+        const addressSet = {{address_set|safe}}
+        $.each(addressSet, function(index, value) {
+            $('#address-form-set').append(`
+            <div class="row exp-row">
+                <strong>آدرس شماره #${index}</strong>
+                ${getForm(index, value)}
+            </div> 
+            `)
+        })
+        
 
          $('#add-more-address').on('click', function() {
-            const formNumber = $('#address-form-set').children().length + 1
+            const formNumber = $('#address-form-set').children().length
             $('#address-form-set').append(`
             <div class="row exp-row">
                <strong>آدرس شماره #${formNumber}</strong>
-               ${form}
+               ${getForm(formNumber, {
+                fields: {
+                    title : '',
+                    recipient_full_name : '',
+                    state : '',
+                    city : '',
+                    street : '',
+                    postal_code : '',
+                    building_number : '',
+                    building_unit_number : ''
+                }
+               })}
             </div>
             `)
         })
     })
-
-   
 </script>
 {% endblock %}
+
+
 
 </body>
 

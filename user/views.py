@@ -5,7 +5,7 @@ from user.forms import ProfileForm, AddressForm
 from user.models import UserProfile,Address
 from django.contrib import messages
 from user.models import User
-
+from django.core import serializers
 
 @login_required
 def Profile(request):
@@ -15,7 +15,7 @@ def Profile(request):
 def Address(request):
     return render(request,'address.html')
 
-@login_required
+@login_required 
 def Createaddress(request):
         CreateaddressFormSet= formset_factory(AddressForm)
         if request.method == "POST":
@@ -48,8 +48,9 @@ def Createaddress(request):
                 initial=[adrs.__dict__ for adrs in request.user.address_set.all()]
             ) 
         return render(request,'address-create.html', {
-            'Createaddressformset': Createaddressformset
-        })
+            'Createaddressformset': Createaddressformset,
+            'address_set' :serializers.serialize('json' ,request.user.address_set.all())
+        }) 
 
 @login_required
 def Userpanel(request):
