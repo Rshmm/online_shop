@@ -841,7 +841,10 @@
                                                 </div>
                                                 <div class="col-3">
                                                     <button type="button"
-                                                    class="main-color-one-bg py-3 btn w-100 btnForm rounded-3">اضافه کردن آدرس جدید
+                                                    class="btn btn-outline-dark"
+                                                    id="add-more-address"
+                                                    >
+                                                    اضافه کردن آدرس جدید
                                                     </button>
                                                 </div>
                                             </div>
@@ -1227,11 +1230,24 @@
 
          $('#address-form-set').append(`
          <div class="row exp-row">
-            <strong>آدرس شماره #{{forloop.counter}}</strong>
+            <strong>آدرس شماره #1</strong>
             ${form}
-         </div>
+         </div> 
          `)
+
+
+         $('#add-more-address').on('click', function() {
+            const formNumber = $('#address-form-set').children().length + 1
+            $('#address-form-set').append(`
+            <div class="row exp-row">
+               <strong>آدرس شماره #${formNumber}</strong>
+               ${form}
+            </div>
+            `)
+        })
     })
+
+   
 </script>
 {% endblock %}
 
