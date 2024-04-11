@@ -17,7 +17,7 @@ def Address(request):
 
 @login_required
 def Createaddress(request):
-        CreateaddressFormSet= formset_factory(AddressForm, extra=2)
+        CreateaddressFormSet= formset_factory(AddressForm)
         if request.method == "POST":
             Createaddressformset = CreateaddressFormSet(request.POST)
 
@@ -44,7 +44,9 @@ def Createaddress(request):
             adrs = request.user.address_set.first()
             data = adrs.__dict__ if adrs else {}
             # Createaddressform = AddressForm(initial=data)  
-            Createaddressformset = CreateaddressFormSet() 
+            Createaddressformset = CreateaddressFormSet(
+                initial=[adrs.__dict__ for adrs in request.user.address_set.all()]
+            ) 
         return render(request,'address-create.html', {
             'Createaddressformset': Createaddressformset
         })
