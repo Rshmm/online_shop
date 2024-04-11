@@ -742,16 +742,8 @@
                                     </ul>
                                     {% endif %}
                                     <form method="post">
-                                       <div class="data-box">
-                                        {{ Createaddressformset.management_form }}
-                                        {% for form in Createaddressformset %}
-                                            <div class="row exp-row">
-                                                <hr class="mb-5 mt-5" />
-                                                <strong>آدرس شماره #{{forloop.counter}}</strong>
-                                                {{ form }}
-                                            </div>
-                                        {% endfor %}
-                                            
+                                       <div id="address-form-set" class="data-box">
+                                      
                                         </div>
 
                                         
@@ -1155,6 +1147,7 @@
 <script src='{% static "user/assets/plugin/go-to-top/script.js" %}'></script>
 <script src='{% static "user/assets/plugin/rasta-contact/script.js" %}'></script>
 
+
 <link href='{% static "user/assets/plugin/go-to-top/style.css" %}' rel="stylesheet">
 <link href='{% static "user/assets/plugin/rasta-contact/style.css" %}' rel="stylesheet">
 
@@ -1182,6 +1175,18 @@
 </script>
 <!-- ===== end new update -->
 
+{% block extra_js%}
+<script>
+    $(document).ready(function() {
+         $('#address-form-set').append(`
+         <div class="row exp-row">
+            <strong>آدرس شماره #{{forloop.counter}}</strong>
+            aaaaa
+         </div>
+         `)
+    })
+</script>
+{% endblock %}
 
 </body>
 
