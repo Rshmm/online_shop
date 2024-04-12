@@ -38,8 +38,8 @@ class UserProfile(models.Model):
     
 
     phone_number=models.CharField(
-        default=0,
         max_length=11,
+        null=True
         # validators=[
         #         RegexValidator(
         #             regex='^[0-9]$',

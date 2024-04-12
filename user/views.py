@@ -1,10 +1,12 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
+from django.forms import formset_factory 
 from user.forms import ProfileForm, AddressForm
 from user.models import UserProfile,Address
 from django.contrib import messages
 from user.models import User
-
+from django.core import serializers
+from user.helpers import get_form_set_key,get_form_set_value
 
 @login_required
 def Profile(request):
@@ -14,35 +16,41 @@ def Profile(request):
 def Address(request):
     return render(request,'address.html')
 
-@login_required
-def Createaddress(request):
-    
-    if request.method == "POST":
-        Createaddressform = AddressForm(request.POST)
-        # check whether it's valid:
-        if Createaddressform.is_valid():
 
-            address = Address.objects.get(user=request.user)
-            address.title = Createaddressform.cleaned_data['title']
-            address.recipient_full_name = Createaddressform.cleaned_data['recipient_full_name']
-            address.state = Createaddressform.cleaned_data['state']
-            address.city = Createaddressform.cleaned_data['city']
-            address.street = Createaddressform.cleaned_data['street']
-            address.postal_code = Createaddressform.cleaned_data['postal_code']
-            address.building_number = Createaddressform.cleaned_data['building_number']
-            address.building_unit_number = Createaddressform.cleaned_data['building_unit_number']
-            address.save()
-            messages.add_message(request, messages.SUCCESS ,"اطلاعات با موفقیت ذخیره شد")
+
+
+@login_required 
+def Createaddress(request):
+        CreateaddressFormSet= formset_factory(AddressForm)
+        if request.method == "POST":
+            # Createaddressformset = CreateaddressFormSet(request.POST)
+            from_set_indexes = get_form_set_key(request)
+            request.user.address_set.all().delete()
+            for key in from_set_indexes:
+                address_data = get_form_set_value(request, key)
+                request.user.address_set.create(**address_data)
+                messages.add_message(request, messages.SUCCESS ,"اطلاعات با موفقیت ذخیره شد")
+
+            # else:
+            #     messages.add_message(request, messages.ERROR ,"مشکلی وجود دارد به ارور توجه کنید یا لطفا تمامی فرم هارا پر کنید")
+           
+
+            # if Createaddressformset.is_valid():
+
+
 
         else:
-            messages.add_message(request, messages.ERROR ,"مشکلی وجود دارد به ارور توجه کنید یا لطفا تمامی فرم هارا پر کنید")
-
-
-    else:
-        Createaddressform = AddressForm(initial=request.user.address.__dict__)
-    return render(request,'address-create.html', {
-        'Createaddressform': Createaddressform
-    })
+            adrs = request.user.address_set.first()
+            data = adrs.__dict__ if adrs else {}
+            # Createaddressform = AddressForm(initial=data)  
+            Createaddressformset = CreateaddressFormSet(
+                initial=[adrs.__dict__ for adrs in request.user.address_set.all()]
+            ) 
+        return render(request,'address-create.html', {
+            # 'Createaddressformset': Createaddressformset,
+            'address_set' :serializers.serialize('json' ,request.user.address_set.all())
+            
+        }) 
 
 @login_required
 def Userpanel(request):
@@ -55,11 +63,11 @@ def edit_user_panel(request):
     if request.method == "POST":
         edituserpanelform = ProfileForm(request.POST)
         if edituserpanelform.is_valid():
-            request.user.userprofile.first_name = edituserpanelform.cleaned_data['first_name']
-            request.user.userprofile.last_name = edituserpanelform.cleaned_data['last_name']
-            request.user.userprofile.phone_number = edituserpanelform.cleaned_data['phone_number']
-            request.user.userprofile.email_address = edituserpanelform.cleaned_data['email_address']
-            request.user.userprofile.national_code = edituserpanelform.cleaned_data['national_code']
+            request.user.userprofile.first_name = request.POST.get('first_name')
+            request.user.userprofile.last_name = request.POST.get('last_name')
+            request.user.userprofile.phone_number = request.POST.get('phone_number')
+            request.user.userprofile.email_address = request.POST.get('email_address')
+            request.user.userprofile.national_code = request.POST.get('national_code')
             request.user.userprofile.save()
             messages.add_message(request, messages.SUCCESS ,"اطلاعات با موفقیت ذخیره شد")
         
@@ -75,3 +83,4 @@ def edit_user_panel(request):
 
 def Home(request):
     return render(request, 'home.html')
+

@@ -9,6 +9,4 @@ User = get_user_model()
 def user_setup_after_singup(sender, instance, created, **kwargs):
     if created:
         UserProfile.objects.create(user=instance)
-        Address.objects.create(user=instance)
-
 

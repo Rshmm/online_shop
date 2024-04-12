@@ -734,6 +734,7 @@
                                     </div>
                                 </div>
                                 <div class="ui-box-item-desc"> 
+                                    
                                     {% if messages %}
                                     <ul class="messages">
                                         {% for message in messages %}
@@ -742,81 +743,110 @@
                                     </ul>
                                     {% endif %}
                                     <form method="post">
+                                       <div id="address-form-set" class="data-box">
                                         
-                                        <div class="row">
+                                        </div>
+
+                                        
+                                        {% comment %} {% for form in Createaddressformset %}
+                                            <div class="row">
+                                                <div class="col-md-6">    
+                                                    <div class="form-floating mb-3">
+                                                        <input type="text" class="form-control float-input" placeholder="{{ Createaddressformset.formfield.help_text }}"
+                                                            id="{{ Createaddressformset.formfield.name }}"  name="{{ Createaddressformset.formfield.name }}" >
+                                                        <label >{{ Createaddressformset.formfield.label }}</label>
+                                                    
+                                                    </div>
+                                                
+                                                </div> 
+                                            </div>   
+                                        {% endfor %} {% endcomment %}
+                                        {% comment %} <div class="row">
                                             <div class="col-md-6">    
                                                 <div class="form-floating mb-3">
-                                                    <input type="text" class="form-control float-input" placeholder="{{ Createaddressform.title.help_text }}"
-                                                        id="{{ Createaddressform.title.name }}"  name="{{ Createaddressform.title.name }}" >
-                                                    <label >{{ Createaddressform.title.label }}</label>
+                                                    <input type="text" class="form-control float-input" placeholder="{{ Createaddressformset.title.help_text }}"
+                                                        id="{{ Createaddressformset.title.name }}"  name="{{ Createaddressformset.title.name }}" >
+                                                    <label >{{ Createaddressformset.title.label }}</label>
                                                  
                                                 </div>
                                                
                                             </div>    
                                             <div class="col-md-6">    
                                                 <div class="form-floating mb-3">
-                                                    <input type="text" class="form-control float-input" placeholder="{{ Createaddressform.recipient_full_name.help_text }}"
-                                                        id="{{ Createaddressform.recipient_full_name.name }}"  name="{{ Createaddressform.recipient_full_name.name }}" >
-                                                    <label >{{ Createaddressform.recipient_full_name.label }}</label>
+                                                    <input type="text" class="form-control float-input" placeholder="{{ Createaddressformset.recipient_full_name.help_text }}"
+                                                        id="{{ Createaddressformset.recipient_full_name.name }}"  name="{{ Createaddressformset.recipient_full_name.name }}" >
+                                                    <label >{{ Createaddressformset.recipient_full_name.label }}</label>
                                                 </div>
                                             </div> 
                                         </div> 
                                         <div class="row">
                                             <div class="col-md-6">    
                                                 <div class="form-floating mb-3">
-                                                    <input type="text" class="form-control float-input" placeholder="{{ Createaddressform.state.help_text }}"
-                                                        id="{{ Createaddressform.state.name }}"  name="{{ Createaddressform.state.name }}" >
-                                                    <label >{{ Createaddressform.state.label }}</label>
+                                                    <input type="text" class="form-control float-input" placeholder="{{ Createaddressformset.state.help_text }}"
+                                                        id="{{ Createaddressformset.state.name }}"  name="{{ Createaddressformset.state.name }}" >
+                                                    <label >{{ Createaddressformset.state.label }}</label>
                                                 </div>
                                             </div>    
                                             <div class="col-md-6">    
                                                 <div class="form-floating mb-3">
-                                                    <input type="text" class="form-control float-input" placeholder="{{ Createaddressform.city.help_text }}"
-                                                        id="{{ Createaddressform.city.name }}"  name="{{ Createaddressform.city.name }}" >
-                                                    <label >{{ Createaddressform.city.label }}</label>
+                                                    <input type="text" class="form-control float-input" placeholder="{{ Createaddressformset.city.help_text }}"
+                                                        id="{{ Createaddressformset.city.name }}"  name="{{ Createaddressformset.city.name }}" >
+                                                    <label >{{ Createaddressformset.city.label }}</label>
                                                 </div>
                                             </div> 
                                         </div> 
                                         <div class="row">
-                                            <div class="col-md-6">    
+                                            <div class="col-
+                                            md-12">    
                                                 <div class="form-floating mb-3">
-                                                    <input type="text" class="form-control float-input" placeholder="{{ Createaddressform.street.help_text }}"
-                                                        id="{{ Createaddressform.street.name }}"  name="{{ Createaddressform.street.name }}" >
-                                                    <label >{{ Createaddressform.street.label }}</label>
+                                                    <input type="text" class="form-control float-input" placeholder="{{ Createaddressformset.street.help_text }}"
+                                                        id="{{ Createaddressformset.street.name }}"  name="{{ Createaddressformset.street.name }}" >
+                                                    <label >{{ Createaddressformset.street.label }}</label>
                                                 </div>
-                                            </div>    
+                                            </div>   
+                                        <div class="row"> 
                                             <div class="col-md-6">    
                                                 <div class="form-floating mb-3">
-                                                    <input type="text" class="form-control float-input" placeholder="{{ Createaddressform.postal_code.help_text }}"
-                                                        id="{{ Createaddressform.postal_code.name }}"  name="{{ Createaddressform.postal_code.name }}" >
-                                                    <label >{{ Createaddressform.postal_code.label }}</label>
-                                                </div>
-                                            </div> 
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">    
-                                                <div class="form-floating mb-3">
-                                                    <input type="text" class="form-control float-input" placeholder="{{ Createaddressform.building_number.help_text }}"
-                                                        id="{{ Createaddressform.building_number.name }}"  name="{{ Createaddressform.building_number.name }}" >
-                                                    <label >{{ Createaddressform.building_number.label }}</label>
-                                                </div>
-                                            </div>    
-                                            <div class="col-md-6">    
-                                                <div class="form-floating mb-3">
-                                                    <input type="text" class="form-control float-input" placeholder="{{ Createaddressform.building_unit_number.help_text }}"
-                                                        id="{{ Createaddressform.building_unit_number.name }}"  name="{{ Createaddressform.building_unit_number.name }}" >
-                                                    <label >{{ Createaddressform.building_unit_number.label }}</label>
+                                                    <input type="text" class="form-control float-input" placeholder="{{ Createaddressformset.postal_code.help_text }}"
+                                                        id="{{ Createaddressformset.postal_code.name }}"  name="{{ Createaddressformset.postal_code.name }}" >
+                                                    <label >{{ Createaddressformset.postal_code.label }}</label>
                                                 </div>
                                             </div> 
-                                        </div>
-                                            <div class="col-4">
-                                                <button
-                                                type="submit"
-                                                class="main-color-one-bg py-3 btn w-100 btnForm rounded-3"
-                                                >
-                                                ذخیره
-                                                </button>
-                                                {% csrf_token %}
+                                            <div class="col-md-3">    
+                                                <div class="form-floating mb-3">
+                                                    <input type="text" class="form-control float-input" placeholder="{{ Createaddressformset.building_number.help_text }}"
+                                                        id="{{ Createaddressformset.building_number.name }}"  name="{{ Createaddressformset.building_number.name }}" >
+                                                    <label >{{ Createaddressformset.building_number.label }}</label>
+                                                </div>
+                                            </div>    
+                                            <div class="col-md-3">    
+                                                <div class="form-floating mb-3">
+                                                    <input type="text" class="form-control float-input" placeholder="{{ Createaddressformset.building_unit_number.help_text }}"
+                                                        id="{{ Createaddressformset.building_unit_number.name }}"  name="{{ Createaddressformset.building_unit_number.name }}" >
+                                                    <label >{{ Createaddressformset.building_unit_number.label }}</label>
+                                                </div>
+                                            </div> 
+                                        </div> {% endcomment %}
+                                            <div class="row">
+                                                <div class="col-4">
+                                                    <button
+                                                    type="submit"
+                                                    class="main-color-one-bg py-3 btn w-100 btnForm rounded-3"
+                                                    >
+                                                    ذخیره
+                                                    </button>
+                                                    {% csrf_token %}
+                                                    
+
+                                                </div>
+                                                <div class="col-3">
+                                                    <button type="button"
+                                                    class="btn btn-outline-primary"
+                                                    id="add-more-address"
+                                                    >
+                                                    اضافه کردن آدرس جدید
+                                                    </button>
+                                                </div>
                                             </div>
                                         </div>
                                     </form>
@@ -1130,6 +1160,7 @@
 <script src='{% static "user/assets/plugin/go-to-top/script.js" %}'></script>
 <script src='{% static "user/assets/plugin/rasta-contact/script.js" %}'></script>
 
+
 <link href='{% static "user/assets/plugin/go-to-top/style.css" %}' rel="stylesheet">
 <link href='{% static "user/assets/plugin/rasta-contact/style.css" %}' rel="stylesheet">
 
@@ -1157,7 +1188,155 @@
 </script>
 <!-- ===== end new update -->
 
+{% block extra_js%}
+<script>
+    $(document).ready(function() {
+        function getForm(index, formfield) {
+            const field = formfield?.fields
+            console.log(formfield.label)
+            return `
+            <div class="ui-box-item-desc">
+                <div class="col px-md-5">
+                    <div class="p-3 bg-light">
+                        <div>
+                            <label for="id_form-${index}-title"></label>
+                            <input 
+                            type="text" 
+                            name="form-${index}-title" 
+                            class="form-control" 
+                            maxlength="50" 
+                            id="id_form-${index}-title" 
+                            placeholder="عنوان آدرس خود را وارد کنید"
+                            value ="${field?.title}" 
+                            >
+                        </div>
+                    </div>
+                </div>
+                    <div class="p-3 bg-light">
+                        <div>
+                            <label for="id_form-${index}-recipient_full_name">نام و نام خانوادگی تحویل گیرنده را وارد کنید :</label>
+                            <input 
+                            type="text" 
+                            name="form-${index}-recipient_full_name" 
+                            class="form-control" 
+                            maxlength="35" 
+                            id="id_form-${index}-recipient_full_name" 
+                            value="${field?.recipient_full_name}">
+                        </div>
+                    </div>
+                <div class="p-3 bg-light">
+                    <div>
+                        <label for="id_form-${index}-state"> نام استان محل زندگی خود را وارد کنید:</label>
+                        <input type="text" name="form-${index}-state" class="form-control" maxlength="50" id="id_form-${index}-state" 
+                        value="${field?.state}">
+                    </div>
+                </div>
+                <div class="p-3 bg-light">
+                    <div>
+                        <label for="id_form-${index}-city">نام شهر محل زندگی خود را وارد کنید:</label>
+                        <input type="text" name="form-${index}-city" class="form-control" maxlength="50" id="id_form-${index}-city" 
+                        value="${field?.city}">
+                    </div>
+                </div>
+                <div class="p-3 bg-light">
+                    <div>
+                        <label for="id_form-${index}-street">آدرس کامل محل زندگی خود را وارد کنید:</label>
+                        <textarea  name="form-${index}-street" cols="40" rows="10" class="form-control" maxlength="50" id="id_form-${index}-street" 
+                        value="${field?.street}"></textarea>
+                    </div>
+                </div>
+                <div class="p-3 bg-light">
+                    <div>
+                        <label for="id_form-${index}-postal_code">کد پستی خود را وارد کنید:</label>
+                        <input type="text" name="form-${index}-postal_code" class="form-control" maxlength="50" id="id_form-${index}-postal_code" 
+                        value="${field?.postal_code}">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="p-3 bg-light">
+                            <div>
+                                <label for="id_form-${index}-building_number">پلاک ساختمان خود را وارد کنید:</label>
+                                <input type="text" name="form-${index}-building_number" class="form-control" maxlength="50" id="id_form-${index}-building_number" 
+                                value="${field?.building_number}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="p-3 bg-light">
+                            <div>
+                                <label for="id_form-${index}-building_unit_number"> شماره واحد خود را وارد کنید:</label>
+                                <input type="text" name="form-${index}-building_unit_number" class="form-control" maxlength="50" id="id_form-${index}-building_unit_number" 
+                                value="${field?.building_unit_number}">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>`
+    } 
+        
+        const addressSet = {{address_set|safe}}
+        $.each(addressSet, function(index, value) {
+            $('#address-form-set').append(`
+            <div id="exp-row-${index + 1}" class="row exp-row">
+                    <div class="col-md-3">  
+                        <strong>آدرس شماره #${index + 1}</strong>
+                        <a type="button"
+                        class="btn btn-danger delete-address"
+                        href="#!"
+                        data-index = "${index + 1}"
+                        >
+                        پاک کردن آدرس                       
+                        </a>   
+                    </div>
+                ${getForm(index, value)}
+                
+                <div>
+                    <hr class="mt-5 mb-5">
+                </div>
+            </div>
+            `)
+        })
+        
+
+         $('#add-more-address').on('click', function(index) {
+            const formNumber = $('#address-form-set').children().length
+            $('#address-form-set').append(`
+            <div id="exp-row-${formNumber + 1}" class="row exp-row">
+               <strong>آدرس شماره #${formNumber + 1}</strong>
+               ${getForm(formNumber, {
+                fields: {
+                    title : '',
+                    recipient_full_name : '',
+                    state : '',
+                    city : '',
+                    street : '',
+                    postal_code : '',
+                    building_number : '',
+                    building_unit_number : ''
+                }
+               })}
+               <div>
+                   <hr class="mt-5 mb-5">
+               </div>
+            </div>
+            `)
+        })
+    
+        $('.delete-address').on('click', function () {
+          const index = $(this).data('index')
+          $('#exp-row-' + index).remove()
+        })
+    })
+</script>
+{% endblock %}
+
+
 
 </body>
 
 </html>
+
+
+        
