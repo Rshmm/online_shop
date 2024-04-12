@@ -841,7 +841,7 @@
                                                 </div>
                                                 <div class="col-3">
                                                     <button type="button"
-                                                    class="btn btn-outline-dark"
+                                                    class="btn btn-outline-primary"
                                                     id="add-more-address"
                                                     >
                                                     اضافه کردن آدرس جدید
@@ -1218,7 +1218,7 @@
                 </div>
                 <div>
                     <label for="id_form-${index}-street">آدرس کامل محل زندگی خود را وارد کنید:</label>
-                    <textarea name="form-${index}-street" cols="40" rows="10" class="form-control" maxlength="50" id="id_form-${index}-street" 
+                    <textarea  name="form-${index}-street" cols="40" rows="10" class="form-control" maxlength="50" id="id_form-${index}-street" 
                     value="${field?.street}"></textarea>
                 </div>
                 <div>
@@ -1256,7 +1256,10 @@
                     </div>
                 ${getForm(index, value)}
                 
-            </div> 
+                <div>
+                    <hr class="mt-5 mb-5">
+                </div>
+            </div>
             `)
         })
         
@@ -1278,6 +1281,9 @@
                     building_unit_number : ''
                 }
                })}
+               <div>
+                   <hr class="mt-5 mb-5">
+               </div>
             </div>
             `)
         })
