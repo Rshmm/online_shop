@@ -49,6 +49,7 @@ def Createaddress(request):
         return render(request,'address-create.html', {
             # 'Createaddressformset': Createaddressformset,
             'address_set' :serializers.serialize('json' ,request.user.address_set.all())
+            
         }) 
 
 @login_required

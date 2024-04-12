@@ -1243,9 +1243,19 @@
         const addressSet = {{address_set|safe}}
         $.each(addressSet, function(index, value) {
             $('#address-form-set').append(`
-            <div class="row exp-row">
-                <strong>آدرس شماره #${index}</strong>
+            <div id="exp-row-${index + 1}" class="row exp-row">
+                    <div class="col-md-3">  
+                        <strong>آدرس شماره #${index + 1}</strong>
+                        <a type="button"
+                        class="btn btn-danger delete-address"
+                        href="#!"
+                        data-index = "${index + 1}"
+                        >
+                        پاک کردن آدرس                       
+                        </a>   
+                    </div>
                 ${getForm(index, value)}
+                
             </div> 
             `)
         })
@@ -1254,8 +1264,8 @@
          $('#add-more-address').on('click', function() {
             const formNumber = $('#address-form-set').children().length
             $('#address-form-set').append(`
-            <div class="row exp-row">
-               <strong>آدرس شماره #${formNumber}</strong>
+            <div id="exp-row-${formNumber + 1}" class="row exp-row">
+               <strong>آدرس شماره #${formNumber + 1}</strong>
                ${getForm(formNumber, {
                 fields: {
                     title : '',
@@ -1270,6 +1280,11 @@
                })}
             </div>
             `)
+        })
+    
+        $('.delete-address').on('click', function () {
+          const index = $(this).data('index')
+          $('#exp-row-' + index).remove()
         })
     })
 </script>
