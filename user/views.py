@@ -6,6 +6,7 @@ from user.models import UserProfile,Address
 from django.contrib import messages
 from user.models import User
 from django.core import serializers
+from user.helpers import get_form_set_key,get_form_set_value
 
 @login_required
 def Profile(request):
@@ -15,36 +16,27 @@ def Profile(request):
 def Address(request):
     return render(request,'address.html')
 
+
+
+
 @login_required 
 def Createaddress(request):
         CreateaddressFormSet= formset_factory(AddressForm)
         if request.method == "POST":
+            # Createaddressformset = CreateaddressFormSet(request.POST)
+            from_set_indexes = get_form_set_key(request)
+            request.user.address_set.all().delete()
+            for key in from_set_indexes:
+                address_data = get_form_set_value(request, key)
+                request.user.address_set.create(**address_data)
+                messages.add_message(request, messages.SUCCESS ,"اطلاعات با موفقیت ذخیره شد")
 
-            form_set_key = [k for k in request.POST  if k.startswith('form-')]
-            unique_indexes = {k.split('-')[1] for k in form_set_key}
-            for unique_index in unique_indexes:
-                form_set_key = [k for k in request.POST if k.startswith('form-' + unique_index )]
-                print(form_set_key)
+            # else:
+            #     messages.add_message(request, messages.ERROR ,"مشکلی وجود دارد به ارور توجه کنید یا لطفا تمامی فرم هارا پر کنید")
+           
 
-            Createaddressformset = CreateaddressFormSet(request.POST)
+            # if Createaddressformset.is_valid():
 
-            if Createaddressformset.is_valid():
-                request.user.address_set.all().delete()
-                for form in Createaddressformset:
-                    request.user.address_set.create(
-                    title = form.cleaned_data.get('title'),
-                    recipient_full_name = form.cleaned_data.get('recipient_full_name'),
-                    state = form.cleaned_data.get('state'),
-                    city = form.cleaned_data.get('city'),
-                    street = form.cleaned_data.get('street'),
-                    postal_code = form.cleaned_data.get('postal_code'),
-                    building_number = form.cleaned_data.get('building_number'),
-                    building_unit_number =  form.cleaned_data.get('building_unit_number')
-                    )
-                    messages.add_message(request, messages.SUCCESS ,"اطلاعات با موفقیت ذخیره شد")
-
-            else:
-                messages.add_message(request, messages.ERROR ,"مشکلی وجود دارد به ارور توجه کنید یا لطفا تمامی فرم هارا پر کنید")
 
 
         else:
@@ -55,7 +47,7 @@ def Createaddress(request):
                 initial=[adrs.__dict__ for adrs in request.user.address_set.all()]
             ) 
         return render(request,'address-create.html', {
-            'Createaddressformset': Createaddressformset,
+            # 'Createaddressformset': Createaddressformset,
             'address_set' :serializers.serialize('json' ,request.user.address_set.all())
         }) 
 
