@@ -1193,48 +1193,80 @@
     $(document).ready(function() {
         function getForm(index, formfield) {
             const field = formfield?.fields
+            console.log(formfield.label)
             return `
             <div class="ui-box-item-desc">
-                <div>
-                    <label for="id_form-${index}-title">عنوان آدرس خود را وارد کنید:</label>
-                    <input type="text" name="form-${index}-title" class="form-control" maxlength="50" id="id_form-${index}-title" 
-                    value ="${field?.title}" >
-                     
+                <div class="col px-md-5">
+                    <div class="p-3 bg-light">
+                        <div>
+                            <label for="id_form-${index}-title"></label>
+                            <input 
+                            type="text" 
+                            name="form-${index}-title" 
+                            class="form-control" 
+                            maxlength="50" 
+                            id="id_form-${index}-title" 
+                            placeholder="عنوان آدرس خود را وارد کنید"
+                            value ="${field?.title}" 
+                            >
+                        </div>
+                    </div>
                 </div>
-                <div>
-                    <label for="id_form-${index}-recipient_full_name">نام و نام خانوادگی تحویل گیرنده را وارد کنید :</label>
-                    <input type="text" name="form-${index}-recipient_full_name" class="form-control" maxlength="35" id="id_form-${index}-recipient_full_name" 
-                    value="${field?.recipient_full_name}">
+                    <div class="p-3 bg-light">
+                        <div>
+                            <label for="id_form-${index}-recipient_full_name">نام و نام خانوادگی تحویل گیرنده را وارد کنید :</label>
+                            <input 
+                            type="text" 
+                            name="form-${index}-recipient_full_name" 
+                            class="form-control" 
+                            maxlength="35" 
+                            id="id_form-${index}-recipient_full_name" 
+                            value="${field?.recipient_full_name}">
+                        </div>
+                    </div>
+                <div class="p-3 bg-light">
+                    <div>
+                        <label for="id_form-${index}-state"> نام استان محل زندگی خود را وارد کنید:</label>
+                        <input type="text" name="form-${index}-state" class="form-control" maxlength="50" id="id_form-${index}-state" 
+                        value="${field?.state}">
+                    </div>
                 </div>
-                <div>
-                    <label for="id_form-${index}-state"> نام استان محل زندگی خود را وارد کنید:</label>
-                    <input type="text" name="form-${index}-state" class="form-control" maxlength="50" id="id_form-${index}-state" 
-                    value="${field?.state}">
+                <div class="p-3 bg-light">
+                    <div>
+                        <label for="id_form-${index}-city">نام شهر محل زندگی خود را وارد کنید:</label>
+                        <input type="text" name="form-${index}-city" class="form-control" maxlength="50" id="id_form-${index}-city" 
+                        value="${field?.city}">
+                    </div>
                 </div>
-                <div>
-                    <label for="id_form-${index}-city">نام شهر محل زندگی خود را وارد کنید:</label>
-                    <input type="text" name="form-${index}-city" class="form-control" maxlength="50" id="id_form-${index}-city" 
-                    value="${field?.city}">
+                <div class="p-3 bg-light">
+                    <div>
+                        <label for="id_form-${index}-street">آدرس کامل محل زندگی خود را وارد کنید:</label>
+                        <textarea  name="form-${index}-street" cols="40" rows="10" class="form-control" maxlength="50" id="id_form-${index}-street" 
+                        value="${field?.street}"></textarea>
+                    </div>
                 </div>
-                <div>
-                    <label for="id_form-${index}-street">آدرس کامل محل زندگی خود را وارد کنید:</label>
-                    <textarea  name="form-${index}-street" cols="40" rows="10" class="form-control" maxlength="50" id="id_form-${index}-street" 
-                    value="${field?.street}"></textarea>
+                <div class="p-3 bg-light">
+                    <div>
+                        <label for="id_form-${index}-postal_code">کد پستی خود را وارد کنید:</label>
+                        <input type="text" name="form-${index}-postal_code" class="form-control" maxlength="50" id="id_form-${index}-postal_code" 
+                        value="${field?.postal_code}">
+                    </div>
                 </div>
-                <div>
-                    <label for="id_form-${index}-postal_code">کد پستی خود را وارد کنید:</label>
-                    <input type="text" name="form-${index}-postal_code" class="form-control" maxlength="50" id="id_form-${index}-postal_code" 
-                    value="${field?.postal_code}">
-                </div>
-                <div>
-                    <label for="id_form-${index}-building_number">پلاک ساختمان خود را وارد کنید:</label>
-                    <input type="text" name="form-${index}-building_number" class="form-control" maxlength="50" id="id_form-${index}-building_number" 
-                    value="${field?.building_number}">
-                </div>
-                <div>
-                    <label for="id_form-${index}-building_unit_number"> شماره واحد خود را وارد کنید:</label>
-                    <input type="text" name="form-${index}-building_unit_number" class="form-control" maxlength="50" id="id_form-${index}-building_unit_number" 
-                    value="${field?.building_unit_number}">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div>
+                            <label for="id_form-${index}-building_number">پلاک ساختمان خود را وارد کنید:</label>
+                            <input type="text" name="form-${index}-building_number" class="form-control" maxlength="50" id="id_form-${index}-building_number" 
+                            value="${field?.building_number}">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div>
+                            <label for="id_form-${index}-building_number">پلاک ساختمان خود را وارد کنید:</label>
+                            <input type="text" name="form-${index}-building_number" class="form-control" maxlength="50" id="id_form-${index}-building_number" 
+                            value="${field?.building_unit_number}">
+                        </div>
+                    <div>
                 </div>
             </div>`
             
