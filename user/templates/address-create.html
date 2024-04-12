@@ -1254,23 +1254,27 @@
                 </div>
                 <div class="row">
                     <div class="col-md-6">
-                        <div>
-                            <label for="id_form-${index}-building_number">پلاک ساختمان خود را وارد کنید:</label>
-                            <input type="text" name="form-${index}-building_number" class="form-control" maxlength="50" id="id_form-${index}-building_number" 
-                            value="${field?.building_number}">
+                        <div class="p-3 bg-light">
+                            <div>
+                                <label for="id_form-${index}-building_number">پلاک ساختمان خود را وارد کنید:</label>
+                                <input type="text" name="form-${index}-building_number" class="form-control" maxlength="50" id="id_form-${index}-building_number" 
+                                value="${field?.building_number}">
+                            </div>
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <div>
-                            <label for="id_form-${index}-building_number">پلاک ساختمان خود را وارد کنید:</label>
-                            <input type="text" name="form-${index}-building_number" class="form-control" maxlength="50" id="id_form-${index}-building_number" 
-                            value="${field?.building_unit_number}">
+                        <div class="p-3 bg-light">
+                            <div>
+                                <label for="id_form-${index}-building_unit_number"> شماره واحد خود را وارد کنید:</label>
+                                <input type="text" name="form-${index}-building_unit_number" class="form-control" maxlength="50" id="id_form-${index}-building_unit_number" 
+                                value="${field?.building_unit_number}">
+                            </div>
                         </div>
-                    <div>
+                    </div>
                 </div>
-            </div>`
-            
-        } 
+            </div>
+        </div>`
+    } 
         
         const addressSet = {{address_set|safe}}
         $.each(addressSet, function(index, value) {
@@ -1296,7 +1300,7 @@
         })
         
 
-         $('#add-more-address').on('click', function() {
+         $('#add-more-address').on('click', function(index) {
             const formNumber = $('#address-form-set').children().length
             $('#address-form-set').append(`
             <div id="exp-row-${formNumber + 1}" class="row exp-row">
