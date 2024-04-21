@@ -16,6 +16,7 @@ class UserProfile(models.Model):
     first_name=models.CharField(
         null=True,
         max_length=25,
+        default=""
         # validators=[
         #     RegexValidator(
         #         regex='^[a-zA-Z]$',
@@ -28,6 +29,7 @@ class UserProfile(models.Model):
     last_name=models.CharField(
         null=True,
         max_length=25,
+        default=""
         # validators=[
         #         RegexValidator(
         #             regex='^[a-zA-Z]$',
@@ -39,7 +41,8 @@ class UserProfile(models.Model):
 
     phone_number=models.CharField(
         max_length=11,
-        null=True
+        null=True,
+        default=""
         # validators=[
         #         RegexValidator(
         #             regex='^[0-9]$',
@@ -48,10 +51,10 @@ class UserProfile(models.Model):
         # ]
         )
     
-    email_address=models.CharField(null=True,max_length=255)
+    email_address=models.CharField(null=True,max_length=255,default="")
 
 
-    national_code = models.CharField(null=True,max_length=14)
+    national_code = models.CharField(null=True,max_length=14,default="")
 
 
 class Address(models.Model):
