@@ -14,8 +14,15 @@ class Post(models.Model):
         DARFT = 'DF' , 'Draft'
         PUBLISHED = 'PB' , 'Published'
 
+
+    class Category(models.TextChoices):
+        TECHNOLOGY = 'TE' , 'تکنولوژیُ'
+        VIDEOGAME = 'VG' , 'بازی های ویدئویی'
+
     title = models.CharField(max_length=250)
-    slug = models.SlugField(max_length=250)
+    category =models.CharField(max_length=2,
+                              choices=Category.choices,
+                              default=Category.TECHNOLOGY)
     author = models.ForeignKey(User,
                                on_delete=models.CASCADE,
                                related_name='blog_posts')
