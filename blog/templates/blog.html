@@ -944,7 +944,7 @@
 
         <!-- start video blog -->
 
-        <div class="container-fluid">
+        {% comment %} <div class="container-fluid">
                 <div
                     class="header-content mb-4 bg-white shadow-box rounded-3 p-3 d-flex align-items-center justify-content-between flex-wrap">
                     <div class="title d-flex align-items-center">
@@ -1182,7 +1182,7 @@
                 </div>
             </div>
         </div>
-        
+         {% endcomment %}
         <!-- end video blog -->
 
         <!-- start latest post  -->
@@ -1205,12 +1205,12 @@
                     </div>
                 </div>
             </div>
-
             <div class="container-fluid">
                 <div class="row gy-3">
+                    {% for post in posts%}
                     <div class="col-lg-3">
                         <div class="blog-item">
-                            <a href="">
+                            <a href='{% url "blog:post_detail" post.id %}'>
                                 <div class="image">
                                     <img src='{% static "blog/assets/image/blog-1.jpg" %}' alt="" class="img-fluid">
                                 </div>
@@ -1218,184 +1218,22 @@
                                     <div class="d-flex align-items-center justify-content-between">
                                         <div class="title-item">
                                             <i class="bi bi-tag me-1"></i>
-                                            <span class="font-12">آموزشی</span>
+                                            <span class="font-12">{{ post.category }}</span>
                                         </div>
                                         <div class="title-item">
                                             <i class="bi bi-alarm me-1"></i>
-                                            <span class="font-12">1 خرداد 1402</span>
+                                            <span class="font-12">{{ post.publish }}</span>
                                         </div>
                                     </div>
-                                    <h4 class="font-16 text-overflow-1 h4"> ارز دیجیتال چیست و چگونه استخراج میشود؟
+                                    <h4 class="font-16 text-overflow-1 h4"> {{ post.title }}
                                     </h4>
                                 </div>
                             </a>
                         </div>
                     </div>
-                    <div class="col-lg-3">
-                        <div class="blog-item">
-                            <a href="">
-                                <div class="image">
-                                    <img src='{% static "blog/assets/image/blog-2.jpg" %}' alt="" class="img-fluid">
-                                </div>
-                                <div class="title">
-                                    <div class="d-flex align-items-center justify-content-between">
-                                        <div class="title-item">
-                                            <i class="bi bi-tag me-1"></i>
-                                            <span class="font-12">آموزشی</span>
-                                        </div>
-                                        <div class="title-item">
-                                            <i class="bi bi-alarm me-1"></i>
-                                            <span class="font-12">1 خرداد 1402</span>
-                                        </div>
-                                    </div>
-                                    <h4 class="font-16 text-overflow-1 h4"> ارز دیجیتال چیست و چگونه استخراج میشود؟
-                                    </h4>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="blog-item">
-                            <a href="">
-                                <div class="image">
-                                    <img src='{% static "blog/assets/image/blog-3.jpg" %}' alt="" class="img-fluid">
-                                </div>
-                                <div class="title">
-                                    <div class="d-flex align-items-center justify-content-between">
-                                        <div class="title-item">
-                                            <i class="bi bi-tag me-1"></i>
-                                            <span class="font-12">آموزشی</span>
-                                        </div>
-                                        <div class="title-item">
-                                            <i class="bi bi-alarm me-1"></i>
-                                            <span class="font-12">1 خرداد 1402</span>
-                                        </div>
-                                    </div>
-                                    <h4 class="font-16 text-overflow-1 h4"> ارز دیجیتال چیست و چگونه استخراج میشود؟
-                                    </h4>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="blog-item">
-                            <a href="">
-                                <div class="image">
-                                    <img src='{% static "blog/assets/image/blog-4.jpg" %}' alt="" class="img-fluid">
-                                </div>
-                                <div class="title">
-                                    <div class="d-flex align-items-center justify-content-between">
-                                        <div class="title-item">
-                                            <i class="bi bi-tag me-1"></i>
-                                            <span class="font-12">آموزشی</span>
-                                        </div>
-                                        <div class="title-item">
-                                            <i class="bi bi-alarm me-1"></i>
-                                            <span class="font-12">1 خرداد 1402</span>
-                                        </div>
-                                    </div>
-                                    <h4 class="font-16 text-overflow-1 h4"> ارز دیجیتال چیست و چگونه استخراج میشود؟
-                                    </h4>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="blog-item">
-                            <a href="">
-                                <div class="image">
-                                    <img src='{% static "blog/assets/image/blog-5.jpg" %}' alt="" class="img-fluid">
-                                </div>
-                                <div class="title">
-                                    <div class="d-flex align-items-center justify-content-between">
-                                        <div class="title-item">
-                                            <i class="bi bi-tag me-1"></i>
-                                            <span class="font-12">آموزشی</span>
-                                        </div>
-                                        <div class="title-item">
-                                            <i class="bi bi-alarm me-1"></i>
-                                            <span class="font-12">1 خرداد 1402</span>
-                                        </div>
-                                    </div>
-                                    <h4 class="font-16 text-overflow-1 h4"> ارز دیجیتال چیست و چگونه استخراج میشود؟
-                                    </h4>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="blog-item">
-                            <a href="">
-                                <div class="image">
-                                    <img src='{% static "blog/assets/image/blog-6.jpg" %}' alt="" class="img-fluid">
-                                </div>
-                                <div class="title">
-                                    <div class="d-flex align-items-center justify-content-between">
-                                        <div class="title-item">
-                                            <i class="bi bi-tag me-1"></i>
-                                            <span class="font-12">آموزشی</span>
-                                        </div>
-                                        <div class="title-item">
-                                            <i class="bi bi-alarm me-1"></i>
-                                            <span class="font-12">1 خرداد 1402</span>
-                                        </div>
-                                    </div>
-                                    <h4 class="font-16 text-overflow-1 h4"> ارز دیجیتال چیست و چگونه استخراج میشود؟
-                                    </h4>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="blog-item">
-                            <a href="">
-                                <div class="image">
-                                    <img src='{% static "blog/assets/image/blog-7.jpg" %}' alt="" class="img-fluid">
-                                </div>
-                                <div class="title">
-                                    <div class="d-flex align-items-center justify-content-between">
-                                        <div class="title-item">
-                                            <i class="bi bi-tag me-1"></i>
-                                            <span class="font-12">آموزشی</span>
-                                        </div>
-                                        <div class="title-item">
-                                            <i class="bi bi-alarm me-1"></i>
-                                            <span class="font-12">1 خرداد 1402</span>
-                                        </div>
-                                    </div>
-                                    <h4 class="font-16 text-overflow-1 h4"> ارز دیجیتال چیست و چگونه استخراج میشود؟
-                                    </h4>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="blog-item">
-                            <a href="">
-                                <div class="image">
-                                    <img src='{% static "blog/assets/image/blog-8.jpg" %}' alt="" class="img-fluid">
-                                </div>
-                                <div class="title">
-                                    <div class="d-flex align-items-center justify-content-between">
-                                        <div class="title-item">
-                                            <i class="bi bi-tag me-1"></i>
-                                            <span class="font-12">آموزشی</span>
-                                        </div>
-                                        <div class="title-item">
-                                            <i class="bi bi-alarm me-1"></i>
-                                            <span class="font-12">1 خرداد 1402</span>
-                                        </div>
-                                    </div>
-                                    <h4 class="font-16 text-overflow-1 h4"> ارز دیجیتال چیست و چگونه استخراج میشود؟
-                                    </h4>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
+                    {% endfor %}
                 </div>
             </div>
-        </div>
-
         <!-- end latest post  -->
 
 
