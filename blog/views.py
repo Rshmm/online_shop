@@ -5,10 +5,12 @@ from django.core.paginator import Paginator
 
 def post_list(request):
     posts = Post.published.all()
-    paginator = Paginator(post_list, 8)
-    page_number = request.GET.get('get', 1)
-    posts = paginator.page(page_number)
-    return render(request, 'blog.html', {'posts': posts})
+    paginator = Paginator(posts, 8)  
+    page_number = request.GET.get("page")
+    page_obj = paginator.get_page(page_number)
+
+    return render(request, 'blog.html', {'posts': posts,
+                                         'page_obj': page_obj})
 
 
 def post_detail(request, year, month, day, post):
