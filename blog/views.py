@@ -4,13 +4,14 @@ from django.core.paginator import Paginator
 
 
 def post_list(request):
-    posts = Post.published.all()
-    paginator = Paginator(posts, 8)  
-    page_number = request.GET.get("page")
-    page_obj = paginator.get_page(page_number)
+    post_list = Post.published.all()
+    p = Paginator(post_list,4)
+    page = request.GET.get('page')
+    posts = p.get_page(page)
 
-    return render(request, 'blog.html', {'posts': posts,
-                                         'page_obj': page_obj})
+        
+    return render(request, 'blog.html', {'post_list': post_list,
+                                         'posts': posts})
 
 
 def post_detail(request, year, month, day, post):
