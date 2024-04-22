@@ -20,8 +20,6 @@
     <header>
         <div class="container-fluid">
             <div class="row align-items-center">
-                {{ user.useraddress }}
-
                 <!-- logo -->
                 <div class="col-lg-2 col-6 order-lg-1 order-1">
                     <div class="d-flex align-items-center">
@@ -318,18 +316,7 @@
                             <a href='{% url "account:signup" %}'  class="btn btn-white header-login border-0 rounded-pill">ثبت نام</a>
                         </div>
                         {% endif %}
-                        {% comment %} <div class="btn-group header-btn-group shadow-sm rounded-pill">
-                            <div class="dropdown">
-                                <a href="#register" data-bs-toggle="dropdown" aria-expanded="false" role="button"
-                                    class="btn btn-white header-register border-0 rounded-pill">
-                                  
-                                    <span>ثبت نام</span>
-                                </a>
-                            </div>
-                            <a href='{% url "login" %}'  class="btn btn-white header-login border-0 rounded-pill">ورود</a>
-                        </div> {% endcomment %}
-                       
-                    
+                      
                         <div class="header-whishlist shadow-sm">
                           
                             <a href="#whishlist">

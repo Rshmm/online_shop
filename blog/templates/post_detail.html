@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="FA-IR" dir="rtl">
 
@@ -6,14 +7,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>قالب سانیار</title>
-    <link rel="stylesheet" href="assets/css/bootstrap.rtl.min.css">
-    <link rel="stylesheet" href="assets/font/bootstrap-icon/bootstrap-icons.css">
-    <link rel="stylesheet" href="assets/plugin/waves/waves.min.css">
-    <link rel="stylesheet" href="assets/plugin/swiper/swiper-bundle.min.css">
-    <link rel="stylesheet" href="assets/plugin/timer/timer.css">
-    <link rel="stylesheet" href="assets/plugin/bootstrap-touchspin/jquery.bootstrap-touchspin.min.css">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/responsive.css">
+    <link rel="stylesheet" href='{% static "blog/assets/css/bootstrap.rtl.min.css" %}'>
+    <link rel="stylesheet" href='{% static "blog/assets/font/bootstrap-icon/bootstrap-icons.css" %}'>
+    <link rel="stylesheet" href='{% static "blog/assets/plugin/waves/waves.min.css" %}'>
+    <link rel="stylesheet" href='{% static "blog/assets/plugin/swiper/swiper-bundle.min.css" %}'>
+    <link rel="stylesheet" href='{% static "blog/assets/plugin/timer/timer.css" %}'>
+    <link rel="stylesheet" href='{% static "blog/assets/plugin/bootstrap-touchspin/jquery.bootstrap-touchspin.min.css" %}'>
+    <link rel="stylesheet" href='{% static "blog/assets/css/style.css" %}'>
+    <link rel="stylesheet" href='{% static "blog/assets/css/responsive.css" %}'>
 
 </head>
 
@@ -41,7 +42,7 @@
                                 </div>
                                 <div class="offcanvas-body">
                                     <a href="" class="text-center d-block mb-3">
-                                        <img src="assets/image/logo.png" alt="" class="img-fluid" width="200">
+                                        <img src='{% static "blog/assets/image/logo.png" %}' alt="" class="img-fluid" width="200">
                                     </a>
                                     <div class="header-bottom-form mb-4 w-100">
                                         <div class="search-form">
@@ -215,7 +216,7 @@
                         </div>
                         <a href="index.html">
                             <div class="logo">
-                                <img src="assets/image/logo.png" alt="" class="img-fluid">
+                                <img src='{% static "blog/assets/image/logo.png" %}' alt="" class="img-fluid">
                             </div>
                         </a>
                     </div>
@@ -237,7 +238,7 @@
                             <a href="#register" data-bs-toggle="dropdown" aria-expanded="false" role="button"
                                 class="btn btn-white header-register border-0 rounded-pill">
                                 <figure class="avatar">
-                                    <img src="assets/image/user.png" alt="amirRezae">
+                                    <img src='{% static "blog/assets/image/user.png" %}' alt="amirRezae">
                                 </figure>
                             </a>
                             <ul class="dropdown-menu">
@@ -282,40 +283,50 @@
                 <!-- auth -->
                 <div class="col-lg-4 order-lg-3 d-lg-block d-none">
                     <div class="d-flex align-items-center justify-content-end">
+                        {% if user.is_authenticated %}
                         <div class="btn-group header-btn-group shadow-sm rounded-pill">
                             <div class="dropdown">
                                 <a href="#register" data-bs-toggle="dropdown" aria-expanded="false" role="button"
                                     class="btn btn-white header-register border-0 rounded-pill">
-                                    <i class="bi bi-person-circle font-20 text-muted me-1"></i>
-                                    <span>ثبت نام</span>
+                                    
                                 </a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="" class="dropdown-item"><i
-                                                class="bi bi-house-door me-2"></i>پروفایل</a></li>
-                                    <li><a href="" class="dropdown-item"><i class="bi bi-cart-check me-2"></i>سفارش های
-                                            من</a></li>
-                                    <li><a href="" class="dropdown-item"><i class="bi bi-pin-map me-2"></i>آدرس های
-                                            من</a></li>
-                                    <li><a href="" class="dropdown-item"><i class="bi bi-bell me-2"></i>پیام ها و
-                                            اطلاعیه ها</a></li>
-                                    <li><a href="" class="dropdown-item"><i class="bi bi-chat-dots me-2"></i>نظرات
-                                            من</a></li>
-                                    <li><a href="" class="dropdown-item"><i
-                                                class="bi bi-question-circle me-2"></i>درخواست پشتیبانی</a></li>
-                                    <li><a href="" class="dropdown-item"><i class="bi bi-heart me-2"></i>محصولات مورد
-                                            علاقه</a></li>
-                                    <li><a href="" class="dropdown-item"><i class="bi bi-gift me-2"></i>کد های تخفیف
-                                            من</a></li>
-                                    <li><a href="" class="dropdown-item mct-hover"><i
-                                                class="bi bi-arrow-right-square me-2"></i>خروج از حساب کاربری</a></li>
-                                </ul>
                             </div>
-                            <a href="#login" class="btn btn-white header-login border-0 rounded-pill">ورود</a>
+                            <a href='{% url "user_panel" %}'  class="btn btn-white header-login border-0 rounded-pill">حساب کاربری</a>
                         </div>
+                        {% endif %}
+
+                        
+                        {% if not user.is_authenticated %}
+                        <div class="btn-group header-btn-group shadow-sm rounded-pill">
+                            <div class="dropdown">
+                                <a href="#register" data-bs-toggle="dropdown" aria-expanded="false" role="button"
+                                    class="btn btn-white header-register border-0 rounded-pill">
+                                    
+                                </a>
+                            </div>
+                            <a href='{% url "user_panel" %}'  class="btn btn-white header-login border-0 rounded-pill">ورود</a>
+                        </div>
+                        
+
+
+                        
+                        <div class="btn-group header-btn-group shadow-sm rounded-pill">
+                            <div class="dropdown">
+                                <a href="#register" data-bs-toggle="dropdown" aria-expanded="false" role="button"
+                                    class="btn btn-white header-register border-0 rounded-pill">
+                                    
+                                </a>
+                            </div>
+                            <a href='{% url "account:signup" %}'  class="btn btn-white header-login border-0 rounded-pill">ثبت نام</a>
+                        </div>
+                        {% endif %}
+                      
                         <div class="header-whishlist shadow-sm">
+                          
                             <a href="#whishlist">
                                 <i class="bi bi-bookmark-check font-20 text-muted"></i>
                             </a>
+                           
                         </div>
                         <div class="header-cart ms-1">
                             <a class="btn header-cart-toggle rounded-pill btn-white border-0 shadow-sm"
@@ -630,7 +641,7 @@
                                 </div>
                                 <div class="blog-post-title-items">
                                     <div class="blog-post-title-item">
-                                        <img src="assets/image/user.png" class="rounded-circle" alt="">
+                                        <img src='{% static "blog/assets/image/user.png" %}' class="rounded-circle" alt="">
                                         <p class="text-muted">مدیر</p>
                                     </div>
                                     <div class="blog-post-title-item">
@@ -671,7 +682,7 @@
                                             اشاره کنیم که این گوشی در سه رنگ آبی و سبز و مشکی راهی بازار شده است.</p>
                                         <p>&nbsp;</p>
                                         <figure class="image-center"><img class="aligncenter"
-                                                src="assets/image/blog-1.jpg"
+                                                src='{% static "blog/assets/image/blog-1.jpg" %}'
                                                 alt="گوشی موبایل شیائومی مدل Redmi 9A"></figure>
                                         <p>&nbsp;</p>
                                         <h2 class="title gold mb-2">صفحه نمایش شیائومی ردمی 9a</h2>
@@ -690,7 +701,7 @@
                                             می&zwnj;دهد.</p>
                                         <p>&nbsp;</p>
                                         <figure class="image-center"><img class="aligncenter"
-                                                src="assets/image/blog-2.jpg"
+                                                src='{% static "blog/assets/image/blog-2.jpg" %}'
                                                 alt="نمایشگر گوشی موبایل شیائومی مدل Redmi 9A"></figure>
                                         <p>&nbsp;</p>
                                         <h2 class="title gold mb-2">اسپیکر شیائومی 9A</h2>
@@ -702,7 +713,7 @@
                                             هدفون به رادیو هم دسترسی خواهید داشت.</p>
                                         <p>&nbsp;</p>
                                         <figure class="image-center"><img class="aligncenter"
-                                                src="assets/image/blog-5.jpg"
+                                                src='{% static "blog/assets/image/blog-5.jpg" %}'
                                                 alt="سیستم تشخیص چهره گوشی موبایل شیائومی مدل Redmi 9A"></figure>
                                         <p>&nbsp;</p>
                                         <h2 class="title gold mb-2">نرم افزار و رابط کاربری ردمی 9A</h2>
@@ -738,7 +749,7 @@
                                             خبری هم از حسگر تشخیص اثر انگشت نباشد.</p>
                                         <p>&nbsp;</p>
                                         <figure class="image-center"><img class="aligncenter"
-                                                src="assets/image/blog-8.jpg"
+                                                src='{% static "blog/assets/image/blog-8.jpg" %}'
                                                 alt="پردازنده گوشی موبایل شیائومی مدل Redmi 9A"></figure>
                                         <p>&nbsp;</p>
                                         <h2 class="title gold mb-2">باتری شیائومی 9A</h2>
@@ -755,12 +766,12 @@
                                             می&zwnj;کشد.</p>
                                         <p>&nbsp;</p>
                                         <figure class="image-center"><img class="aligncenter"
-                                                src="assets/image/blog-4.jpg"
+                                                src='{% static "blog/assets/image/blog-4.jpg" %}'
                                                 alt="باتری و اسپیکر گوشی موبایل شیائومی مدل Redmi 9A"></figure>
                                         <p>&nbsp;</p>
                                         <h2 class="title gold mb-2">بررسی دوربین شیائومی ردمی 9a</h2>
                                         <figure class="image-center"><img class="aligncenter"
-                                                src="assets/image/blog-5.jpg"
+                                                src='{% static "blog/assets/image/blog-5.jpg" %}'
                                                 alt="دوربین گوشی موبایل شیائومی مدل Redmi 9A"></figure>
                                         <p>&nbsp;</p>
                                         <p>برای گوشی Redmi 9A از یک دوربین ۱۴ مگاپیکسلی با فلش LED استفاده شده است. دوربین
@@ -809,7 +820,7 @@
                                                 <a href="" class="nav-link">
                                                     <div class="mini-blog-item">
                                                         <div class="image">
-                                                            <img src="assets/image/blog-6.jpg" class="img-fluid" alt="">
+                                                            <img src='{% static "blog/assets/image/blog-6.jpg" %}' class="img-fluid" alt="">
                                                         </div>
                                                         <div class="d-flex align-items-start desc flex-wrap flex-column justify-content-between">
                                                             <h5 class="title">آخرین پرچمداران گوشی شیائومی</h5>
@@ -826,7 +837,7 @@
                                                 <a href="" class="nav-link">
                                                     <div class="mini-blog-item">
                                                         <div class="image">
-                                                            <img src="assets/image/blog-5.jpg" class="img-fluid" alt="">
+                                                            <img src='{% static "blog/assets/image/blog-5.jpg" %}' class="img-fluid" alt="">
                                                         </div>
                                                         <div class="d-flex align-items-start desc flex-wrap flex-column justify-content-between">
                                                             <h5 class="title">آخرین پرچمداران گوشی شیائومی</h5>
@@ -843,7 +854,7 @@
                                                 <a href="" class="nav-link">
                                                     <div class="mini-blog-item">
                                                         <div class="image">
-                                                            <img src="assets/image/blog-4.jpg" class="img-fluid" alt="">
+                                                            <img src='{% static "blog/assets/image/blog-4.jpg" %}' class="img-fluid" alt="">
                                                         </div>
                                                         <div class="d-flex align-items-start desc flex-wrap flex-column justify-content-between">
                                                             <h5 class="title">آخرین پرچمداران گوشی شیائومی</h5>
@@ -860,7 +871,7 @@
                                                 <a href="" class="nav-link">
                                                     <div class="mini-blog-item">
                                                         <div class="image">
-                                                            <img src="assets/image/blog-3.jpg" class="img-fluid" alt="">
+                                                            <img src='{% static "blog/assets/image/blog-3.jpg" %}' class="img-fluid" alt="">
                                                         </div>
                                                         <div class="d-flex align-items-start desc flex-wrap flex-column justify-content-between">
                                                             <h5 class="title">آخرین پرچمداران گوشی شیائومی</h5>
@@ -877,7 +888,7 @@
                                                 <a href="" class="nav-link">
                                                     <div class="mini-blog-item">
                                                         <div class="image">
-                                                            <img src="assets/image/blog-2.jpg" class="img-fluid" alt="">
+                                                            <img src='{% static "blog/assets/image/blog-2.jpg" %}' class="img-fluid" alt="">
                                                         </div>
                                                         <div class="d-flex align-items-start desc flex-wrap flex-column justify-content-between">
                                                             <h5 class="title">آخرین پرچمداران گوشی شیائومی</h5>
@@ -894,7 +905,7 @@
                                                 <a href="" class="nav-link">
                                                     <div class="mini-blog-item">
                                                         <div class="image">
-                                                            <img src="assets/image/blog-1.jpg" class="img-fluid" alt="">
+                                                            <img src='{% static "blog/assets/image/blog-1.jpg" %}' class="img-fluid" alt="">
                                                         </div>
                                                         <div class="d-flex align-items-start desc flex-wrap flex-column justify-content-between">
                                                             <h5 class="title">آخرین پرچمداران گوشی شیائومی</h5>
@@ -911,7 +922,7 @@
                                                 <a href="" class="nav-link">
                                                     <div class="mini-blog-item">
                                                         <div class="image">
-                                                            <img src="assets/image/blog-8.jpg" class="img-fluid" alt="">
+                                                            <img src='{% static "blog/assets/image/blog-8.jpg" %}' class="img-fluid" alt="">
                                                         </div>
                                                         <div class="d-flex align-items-start desc flex-wrap flex-column justify-content-between">
                                                             <h5 class="title">آخرین پرچمداران گوشی شیائومی</h5>
@@ -939,7 +950,7 @@
                                     </div>
                                     <div class="blog-news-item mt-4">
                                         <a href="">
-                                            <img src="assets/image/blog-1.jpg" alt="" class="img-fluid">
+                                            <img src='{% static "blog/assets/image/blog-1.jpg" %}' alt="" class="img-fluid">
                                             <div class="desc">
                                                 <h3 class="title">انتخاب هارد اکسنترنال مناسب </h3>
                                                 <div class="date">
@@ -979,7 +990,7 @@
                                     <div class="comment-item-avatar d-sm-flex d-none">
                                         <div class="comment-item-avatar-img ">
                                             <a href="" class="rounded-circle">
-                                                <img src="assets/image/user-profile.png" class="rounded-circle"
+                                                <img src='{% static "blog/assets/image/user-profile.png" %}' class="rounded-circle"
                                                     width="40" alt="">
                                             </a>
                                         </div>
@@ -988,7 +999,7 @@
                                         <div class="comment-item-avatar d-sm-none d-flex mb-2">
                                             <div class="comment-item-avatar-img ">
                                                 <a href="" class="rounded-circle">
-                                                    <img src="assets/image/user-profile.png" class="rounded-circle"
+                                                    <img src='{% static "blog/assets/image/user-profile.png" %}' class="rounded-circle"
                                                         width="40" alt="">
                                                 </a>
                                             </div>
@@ -1007,7 +1018,7 @@
                                                 <div class="comment-item-avatar d-sm-flex d-none">
                                                     <div class="comment-item-avatar-img ">
                                                         <a href="" class="rounded-circle">
-                                                            <img src="assets/image/user.png"
+                                                            <img src='{% static "blog/assets/image/user.png" %}'
                                                                 class="rounded-circle" width="40" alt="">
                                                         </a>
                                                     </div>
@@ -1016,7 +1027,7 @@
                                                     <div class="comment-item-avatar d-sm-none d-flex mb-2">
                                                         <div class="comment-item-avatar-img ">
                                                             <a href="" class="rounded-circle">
-                                                                <img src="assets/image/user.png"
+                                                                <img src='{% static "blog/assets/image/user.png" %}'
                                                                     class="rounded-circle" width="40" alt="">
                                                             </a>
                                                         </div>
@@ -1110,7 +1121,7 @@
             <div
                 class="header-content mb-4 bg-white shadow-box rounded-3 p-3 d-flex align-items-center justify-content-between flex-wrap">
                 <div class="title d-flex align-items-center">
-                    <img src="assets/image/square.png" alt="" class="img-fluid">
+                    <img src='{% static "blog/assets/image/square.png" %}' alt="" class="img-fluid">
                     <h5 class="font-16 ms-3">مطالب مرتبط <span class="main-color-one-color d-inline-block">وبلاگ</span>
                     </h5>
                 </div>
@@ -1131,7 +1142,7 @@
                             <div class="blog-item">
                                 <a href="">
                                     <div class="image">
-                                        <img src="assets/image/blog-1.jpg" alt="" class="img-fluid">
+                                        <img src='{% static "blog/assets/image/blog-1.jpg" %}' alt="" class="img-fluid">
                                     </div>
                                     <div class="title">
                                         <div class="d-flex align-items-center justify-content-between">
@@ -1154,7 +1165,7 @@
                             <div class="blog-item">
                                 <a href="">
                                     <div class="image">
-                                        <img src="assets/image/blog-2.jpg" alt="" class="img-fluid">
+                                        <img src='{% static "blog/assets/image/blog-2.jpg" %}' alt="" class="img-fluid">
                                     </div>
                                     <div class="title">
                                         <div class="d-flex align-items-center justify-content-between">
@@ -1177,7 +1188,7 @@
                             <div class="blog-item">
                                 <a href="">
                                     <div class="image">
-                                        <img src="assets/image/blog-3.jpg" alt="" class="img-fluid">
+                                        <img src='{% static "blog/assets/image/blog-3.jpg" %}' alt="" class="img-fluid">
                                     </div>
                                     <div class="title">
                                         <div class="d-flex align-items-center justify-content-between">
@@ -1200,7 +1211,7 @@
                             <div class="blog-item">
                                 <a href="">
                                     <div class="image">
-                                        <img src="assets/image/blog-4.jpg" alt="" class="img-fluid">
+                                        <img src='{% static "blog/assets/image/blog-4.jpg" %}' alt="" class="img-fluid">
                                     </div>
                                     <div class="title">
                                         <div class="d-flex align-items-center justify-content-between">
@@ -1223,7 +1234,7 @@
                             <div class="blog-item">
                                 <a href="">
                                     <div class="image">
-                                        <img src="assets/image/blog-5.jpg" alt="" class="img-fluid">
+                                        <img src='{% static "blog/assets/image/blog-5.jpg" %}' alt="" class="img-fluid">
                                     </div>
                                     <div class="title">
                                         <div class="d-flex align-items-center justify-content-between">
@@ -1246,7 +1257,7 @@
                             <div class="blog-item">
                                 <a href="">
                                     <div class="image">
-                                        <img src="assets/image/blog-6.jpg" alt="" class="img-fluid">
+                                        <img src='{% static "blog/assets/image/blog-6.jpg" %}' alt="" class="img-fluid">
                                     </div>
                                     <div class="title">
                                         <div class="d-flex align-items-center justify-content-between">
@@ -1269,7 +1280,7 @@
                             <div class="blog-item">
                                 <a href="">
                                     <div class="image">
-                                        <img src="assets/image/blog-7.jpg" alt="" class="img-fluid">
+                                        <img src='{% static "blog/assets/image/blog-7.jpg" %}' alt="" class="img-fluid">
                                     </div>
                                     <div class="title">
                                         <div class="d-flex align-items-center justify-content-between">
@@ -1292,7 +1303,7 @@
                             <div class="blog-item">
                                 <a href="">
                                     <div class="image">
-                                        <img src="assets/image/blog-8.jpg" alt="" class="img-fluid">
+                                        <img src='{% static "blog/assets/image/blog-8.jpg" %}' alt="" class="img-fluid">
                                     </div>
                                     <div class="title">
                                         <div class="d-flex align-items-center justify-content-between">
@@ -1440,7 +1451,7 @@
                 <div class="row gy-3">
                     <div class="col-lg-9">
                         <div class="footer-menu-text">
-                            <img src="assets/image/logo.png" class="img-fluid" alt="">
+                            <img src='{% static "blog/assets/image/logo.png" %}' class="img-fluid" alt="">
                             <p class="text-justify mb-2">
                                 لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک
                                 است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط
@@ -1458,10 +1469,10 @@
                     <div class="col-lg-3">
                         <div class="footer-namad">
                             <a href="">
-                                <img src="assets/image/enamad.png" alt="" class="img-thumbnail">
+                                <img src='{% static "blog/assets/image/enamad.png" %}' alt="" class="img-thumbnail">
                             </a>
                             <a href="">
-                                <img src="assets/image/rezi.png" alt="" class="img-thumbnail">
+                                <img src='{% static "blog/assets/image/rezi.png" %}' alt="" class="img-thumbnail">
                             </a>
                         </div>
                     </div>
@@ -1524,7 +1535,7 @@
                     <div class="row gy-2">
                         <div class="col-4">
                             <div class="image">
-                                <img src="assets/image/product/laptop-1.jpg" alt="" class="img-fluid">
+                                <img src='{% static "blog/assets/image/product/laptop-1.jpg" %}' alt="" class="img-fluid">
                             </div>
                         </div>
                         <div class="col-8">
@@ -1555,7 +1566,7 @@
                     <div class="factor">
                         <div class="title">
                             <div class="d-flex align-items-center">
-                                <img src="assets/image/shopping-bag.png" class="img-fluid" alt="">
+                                <img src='{% static "blog/assets/image/shopping-bag.png" %}' class="img-fluid" alt="">
                                 <h6 class="font-16">سفارش شما</h6>
                             </div>
                         </div>
@@ -1607,21 +1618,21 @@
         </div>
     </div>
 
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/plugin/waves/waves.min.js"></script>
-    <script src="assets/plugin/swiper/swiper-bundle.min.js"></script>
-    <script src="assets/plugin/timer/timer.js"></script>
-    <script src="assets/plugin/bootstrap-touchspin/jquery.bootstrap-touchspin.min.js"></script>
-    <script src="assets/js/app.js"></script>
-    <script src="assets/js/jquery-app.js"></script>
+    <script src='{% static "blog/assets/js/jquery.min.js" %}'></script>
+    <script src='{% static "blog/assets/js/bootstrap.bundle.min.js" %}'></script>
+    <script src='{% static "blog/assets/plugin/waves/waves.min.js" %}'></script>
+    <script src='{% static "blog/assets/plugin/swiper/swiper-bundle.min.js" %}'></script>
+    <script src='{% static "blog/assets/plugin/timer/timer.js" %}'></script>
+    <script src='{% static "blog/assets/plugin/bootstrap-touchspin/jquery.bootstrap-touchspin.min.js" %}'></script>
+    <script src='{% static "blog/assets/js/app.js" %}'></script>
+    <script src='{% static "blog/assets/js/jquery-app.js" %}'></script>
 
     <!-- ===== start new update -->
-    <script src="assets/plugin/go-to-top/script.js"></script>
-    <script src="assets/plugin/rasta-contact/script.js"></script>
+    <script src='{% static "blog/assets/plugin/go-to-top/script.js" %}'></script>
+    <script src='{% static "blog/assets/plugin/rasta-contact/script.js" %}'></script>
 
-    <link rel="stylesheet" href="assets/plugin/go-to-top/style.css">
-    <link rel="stylesheet" href="assets/plugin/rasta-contact/style.css">
+    <link rel="stylesheet" href='{% static "blog/assets/plugin/go-to-top/style.css" %}'>
+    <link rel="stylesheet" href='{% static "blog/assets/plugin/rasta-contact/style.css" %}'>
 
     <script>
         //// config floating contact
