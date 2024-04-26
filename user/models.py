@@ -74,7 +74,7 @@ class Address(models.Model):
         )
     state=models.CharField(null=True,max_length=50)
     city=models.CharField(null=True,max_length=50)
-    street=models.CharField(null=True,max_length=50)
+    street=models.CharField(null=True,max_length=500)
     postal_code=models.CharField(
         null=True,
          max_length = 50,
