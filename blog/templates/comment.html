@@ -1,0 +1,9 @@
+{% block title%}add a comment{%endblock%}
+{% block content%}
+    {% if comment %}
+        <h2>your comment had been added</h2>
+        <p><a href='{{ post.get_absolute_url }}'>back to the post</a></p>
+    {% else %}
+        {% include "comment_form.html" %}
+    {% endif %}
+{% endblock %}

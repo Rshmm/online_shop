@@ -30,14 +30,10 @@ def post_detail(request, year, month, day, post):
 def post_comment(request, post_id):
     post = get_object_or_404(post,id=post_id,status=Post.Status.PUBLISHED)
     comment = None
-    # a comment was posted
     form = CommentForm(data=request.POST)
     if form.is_valid():
-        # create a comment object without saving it to the database
         comment = form.save(commit=False)
-        #assign the post to the comment
         comment.post = post
-        # save the comment to the database
         comment.save()
     return render(request, 'comment.html',
                   {
