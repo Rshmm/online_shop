@@ -842,42 +842,24 @@
                             <div class="col-12">
                                 <div class="title-panel">
                                     <h6 class="tab-title text-start">
-                                        <span>1</span>
-                                        <span>دیدگاه برای</span>
-                                        <span>تلفن همراه شگفت انگیز glx که این روزا غوغا کرده در بازار
-                                        </span>
+                                    {% with comments.count as total_comments %}
+                                    {{ total_comments }}
+                                    عدد دیدگاه برای این پست گذاشته شده
+                                    {% endwith %}
                                     </h6>
-                                </div>
-                                <div class="comment-item">
-                                    <div class="comment-item-avatar d-sm-flex d-none">
-                                        <div class="comment-item-avatar-img ">
-                                            <a href="" class="rounded-circle">
-                                                <img src='{% static "blog/assets/image/user-profile.png" %}' class="rounded-circle"
-                                                    width="40" alt="">
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="comment-item-desc">
-                                        <div class="comment-item-avatar d-sm-none d-flex mb-2">
-                                            <div class="comment-item-avatar-img ">
-                                                <a href="" class="rounded-circle">
-                                                    <img src='{% static "blog/assets/image/user-profile.png" %}' class="rounded-circle"
-                                                        width="40" alt="">
-                                                </a>
+                                </div>                                      
+                                    {% for comment in comments%}
+                                        <div class="comment-item">
+                                            <div class="comment-item-avatar d-sm-flex d-none">
+                                                <div class="comment-item-avatar-img ">
+                                                    <a href="" class="rounded-circle">
+                                                        <img src='{% static "blog/assets/image/user.png" %}'
+                                                            class="rounded-circle" width="40" alt="">
+                                                    </a>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="comment-item-title">
-                                            <div class="comment-date">
-                                                <p class="text-muted comment-date-auther">amirrezaie</p>
-                                                <p class="text-muted comment-date-speractor">–</p>
-                                                <p class="text-muted comment-date-date">۲۳ تیر ۱۴۰۱</p>
-                                            </div>
-                                        </div>
-                                        <div class="comment-item-content">
-                                            <p>گوشیه خوبیه. ارزش خرید داره.
-                                            </p>
-                                            <div class="comment-item">
-                                                <div class="comment-item-avatar d-sm-flex d-none">
+                                            <div class="comment-item-desc com-response">
+                                                <div class="comment-item-avatar d-sm-none d-flex mb-2">
                                                     <div class="comment-item-avatar-img ">
                                                         <a href="" class="rounded-circle">
                                                             <img src='{% static "blog/assets/image/user.png" %}'
@@ -885,34 +867,26 @@
                                                         </a>
                                                     </div>
                                                 </div>
-                                                <div class="comment-item-desc com-response">
-                                                    <div class="comment-item-avatar d-sm-none d-flex mb-2">
-                                                        <div class="comment-item-avatar-img ">
-                                                            <a href="" class="rounded-circle">
-                                                                <img src='{% static "blog/assets/image/user.png" %}'
-                                                                    class="rounded-circle" width="40" alt="">
-                                                            </a>
-                                                        </div>
+                                                <div class="comment-item-title">
+                                                    <div class="comment-date">
+                                                        <p class="text-muted comment-date-auther">{{comment.name}}</p>
+                                                        <p class="text-muted comment-date-speractor">–</p>
+                                                        <p class="text-muted comment-date-date">{{comment.created}}</p>
                                                     </div>
-                                                    <div class="comment-item-title">
-                                                        <div class="comment-date">
-                                                            <p class="text-muted comment-date-auther">amirrezaie</p>
-                                                            <p class="text-muted comment-date-speractor">–</p>
-                                                            <p class="text-muted comment-date-date">۲۳ تیر ۱۴۰۱</p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="comment-item-content">
-                                                        <p>اره واقعا عالیه من که ازش خیلی راضی ام
-                                                        </p>
-                                                    </div>
-                                                    <a href="" class="btn main-color-one-bg px-4 btn-sm">پاسخ</a>
+                                                </div>
+                                                <div class="comment-item-content">
+                                                    <p>{{ comment.body|linebreaks }}
+                                                    </p>
                                                 </div>
                                             </div>
                                         </div>
-                                        <a href="" class="btn main-color-one-bg px-4 btn-sm">پاسخ</a>
-                                    </div>
+                                    {% empty %}
+                                        <p>
+                                            این پست هنوز دیدگاهی ندارد
+                                            دیدگاه خود را بنویسید
+                                        </p> 
+                                    {% endfor %}
                                 </div>
-                                
                             </div>
                         </div>
                     </div>
@@ -927,46 +901,8 @@
                 <div class="comment-form">
                     <div class="title-panel mb-3">
                         <h6 class="font-18">دیدگاه خود را بنویسید</h6>
+                            {% include "includes/comment_form.html"%}
                     </div>
-                    <form action="">
-                        <div class="form-group mb-2">
-                            <label for="commentbody" class="form-label my-3">دیدگاه شما <span
-                                    class="text-danger ms-1">*</span></label>
-                            <textarea id="commentbody" rows="7" class="form-control"
-                                placeholder="دیدگاه شما" required></textarea>
-                        </div>
-                        <div class="form-group mb-2">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-inline w-100">
-                                        <label for="commentName" class="form-label my-3">نام شما
-                                            <span class="text-danger ms-1">*</span></label>
-                                        <input type="text" id="commentName" class="form-control"
-                                            placeholder="نام شما" required>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-inline w-100 mb-2">
-                                        <label for="commentEmail" class="form-label my-3">ایمیل
-                                            شما<span class="text-danger ms-1">*</span></label>
-                                        <input type="email" id="commentEmail" class="form-control text-end"
-                                            placeholder="ایمیل شما" required>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-check mb-2">
-                            <input type="checkbox" name="" id="commentCheckBox" class="form-check-input"
-                                required>
-                            <label for="commentCheckBox" class="form-check-label text-muted">
-                                ذخیره
-                                نام، ایمیل و وبسایت من در مرورگر برای زمانی که دوباره دیدگاهی
-                                می‌نویسم.
-                            </label>
-                        </div>
-                        <input type="submit" value="ثبت"
-                            class="btn main-color-three-bg px-5  rounded-3 mt-3" style="padding:10px 100px !important">
-                    </form>
                 </div>
             </div>
         </div>

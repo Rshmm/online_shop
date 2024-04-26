@@ -1,7 +1,31 @@
-<h2> add a new comment </h2>
-
-<from action='{% url "blog:post_comment" post_id %}' method = "post">
-    {{form.as_p}}
+<form action="{% url 'blog:post_comment' post.id %}" method="post">
     {% csrf_token %}
-    <p><input type="submit" value="add comment"></p>
+    <div class="form-group mb-2">
+        <label for="commentbody" class="form-label my-3">دیدگاه شما <span
+                class="text-danger ms-1">*</span></label>
+        <textarea id="{{form.body.name}}" name="{{form.body.name}}"  rows="7" class="form-control"
+            placeholder="دیدگاه شما" required></textarea>
+    </div>
+    <div class="form-group mb-2">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-inline w-100">
+                    <label for="commentName" class="form-label my-3">نام شما
+                        <span class="text-danger ms-1">*</span></label>
+                    <input type="text" id="{{form.name.name}}" name="{{form.name.name}}" class="form-control"
+                        placeholder="نام شما" required>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-inline w-100 mb-2">
+                    <label for="commentEmail" class="form-label my-3">ایمیل
+                        شما<span class="text-danger ms-1">*</span></label>
+                    <input type="email" id="{{form.email.name}}" name="{{form.email.name}}" class="form-control text-end"
+                        placeholder="ایمیل شما" required>
+                </div>
+            </div>
+        </div>
+    </div>
+    <input type="submit" value="ثبت"
+        class="btn main-color-three-bg px-5  rounded-3 mt-3" style="padding:10px 100px !important">
 </form>

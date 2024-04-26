@@ -33,9 +33,9 @@ def post_detail(request, year, month, day, post):
 
 @require_POST
 def post_comment(request, post_id):
-    post = get_object_or_404(post,id=post_id,status=Post.Status.PUBLISHED)
+    post = get_object_or_404(Post,id=post_id,status=Post.Status.PUBLISHED)
     comment = None
-    form = CommentForm(data=request.POST)
+    form = CommentForm(request.POST)
     if form.is_valid():
         comment = form.save(commit=False)
         comment.post = post
