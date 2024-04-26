@@ -734,12 +734,6 @@
                         <h5 class="font-16 ms-3">پربازدید ترین مطالب <span class="main-color-one-color d-inline-block">وبلاگ</span>
                         </h5>
                     </div>
-                    <div class="link">
-                        <a href="" class="border-animate fromCenter pb-1 fw-bold">
-                            مشاهده همه
-                            <i class="bi bi-chevron-double-left main-color-one-color"></i>
-                        </a>
-                    </div>
                 </div>
             </div>
 
@@ -1194,14 +1188,8 @@
                     class="header-content mb-4 bg-white shadow-box rounded-3 p-3 d-flex align-items-center justify-content-between flex-wrap">
                     <div class="title d-flex align-items-center">
                         <img src='{% static "blog/assets/image/square.png" %}' alt="" class="img-fluid">
-                        <h5 class="font-16 ms-3">آخرین مطالب <span class="main-color-one-color d-inline-block">وبلاگ</span>
+                        <h5 class="font-16 ms-3"><span class="main-color-one-color d-inline-block">وبلاگ</span>
                         </h5>
-                    </div>
-                    <div class="link">
-                        <a href="" class="border-animate fromCenter pb-1 fw-bold">
-                            مشاهده همه
-                            <i class="bi bi-chevron-double-left main-color-one-color"></i>
-                        </a>
                     </div>
                 </div>
             </div>
@@ -1233,24 +1221,6 @@
                     </div>
                     {% endfor %}
                 </div>
-            </div>
-            <div class="pagination">
-                <span class="step-links">
-                    {% if posts.has_previous %}
-                        <a href="?page=1">&laquo; first</a>
-                        <a href="?page={{ posts.previous_page_number }}">previous</a>
-                    {% endif %}
-            
-                    <span class="current">
-                        Page {{ posts.number }} of {{ posts.paginator.num_pages }}.
-                    </span>
-            
-                    {% if posts.has_next %}
-                        <a href="?page={{ posts.next_page_number }}">next</a>
-                        <a href="?page={{ posts.paginator.num_pages }}">last &raquo;</a>
-                    {% endif %}
-                </span>
-            </div>
             
             <div class="col-12">
                 <div class="my-paginate my-4">
