@@ -12,7 +12,7 @@ def get_form_set_value(request, key):
         'recipient_full_name' : data[f'{prefix}-recipient_full_name'],
         'state' : data[f'{prefix}-state'],
         'city' : data[f'{prefix}-city'],
-        'street' : data[f'{prefix}-street'],
+        'full_address' : data[f'{prefix}-full_address'],
         'postal_code' : data[f'{prefix}-postal_code'],
         'building_number' : data[f'{prefix}-building_number'],
         'building_unit_number' : data[f'{prefix}-building_unit_number'] 
