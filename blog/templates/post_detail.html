@@ -648,6 +648,11 @@
                                         <p class="text-muted">{{ post.publish }}
                                         </p>
                                     </div>
+                                    <div class="blog-post-title-item">
+                                        <i class="bi bi-tag"></i>
+                                        <p class="text-muted">{{ post.tags.all|join:", "}}
+                                        </p>
+                                    </div>
                                     {% comment %} <div class="blog-post-title-item">
                                         <i class="bi bi-chat-dots"></i>
                                         <p>2</p>
