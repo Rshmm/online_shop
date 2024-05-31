@@ -1212,14 +1212,13 @@
                                             <div class="title-item">
                                                 <i class="bi bi-tag me-1"></i>
                                                 <span class="font-12">
-                                                    {{ post.tags.all|join:", " }}
+                                                    {{ post.tags.all|join:", "}}
                                                     {% comment %} {% for tags in post.tags.all %}
                                                         <a href='{% url "blog:post_tag" tag.slug%}'>
                                                             {{ tag.name }}
                                                         </a>
                                                         {% if not forloop.last %}, {% endif %}
                                                     {% endfor %} {% endcomment %}
-
                                                 </span>
                                             </div>
                                             <div class="title-item">

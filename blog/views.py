@@ -4,6 +4,7 @@ from django.core.paginator import Paginator
 from blog.froms import CommentForm
 from django.views.decorators.http import require_POST
 from taggit.models import Tag
+from django.db.models import Count 
 
 
 def post_list(request, tag_slug=None):
@@ -11,7 +12,7 @@ def post_list(request, tag_slug=None):
     tag = None
     if tag_slug:
         tag = get_object_or_404(Tag, slug=tag_slug)
-        post_list = post_list.filter(tags_in=[tag])
+        post_list = post_list.filter(tags__in=[tag])
     p = Paginator(post_list,8)
     page = request.GET.get('page')
     posts = p.get_page(page)    
@@ -44,10 +45,17 @@ def post_comment(request, post_id):
         comment = form.save(commit=False)
         comment.post = post
         comment.save()
+
+    post_tags_ids = post.tags.values_list('id', flat=True)
+    similar_posts = post.published.filter(tags__in=post_tags_ids)\
+        .exclude(id=post.id)
+    similar_posts = similar_posts.annotate(same_tags=Count('tags'))\
+        .order_by('-same_tags','-publish')[:4]
     return render(request, 'comment.html',
                   {
                       'post' : post,
                       'form' : form,
-                      'comment' : comment
+                      'comment' : comment,
+                      'similar_posts' : similar_posts
                   })
     
