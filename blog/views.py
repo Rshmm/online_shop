@@ -22,7 +22,7 @@ def post_detail(request, year, month, day, post):
                             slug=post,
                             publish__year=year,
                             publish__month=month,
-                            publish__day=day)
+                            publish__day=day,)
     comments = post.comments.filter(active=True)
     form = CommentForm()
     return render(request, 'post_detail.html', {'post': post,
