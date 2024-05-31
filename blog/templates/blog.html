@@ -1197,30 +1197,30 @@
             </div>
             <div class="container-fluid">
                 <div class="row gy-3">
-                    {% for post in posts%}
-                    <div class="col-lg-3">
-                        <div class="blog-item">
-                            <a href="{{ post.get_absolute_url }}">
-                                <div class="image">
-                                    <img src='{% static "blog/assets/image/blog-1.jpg" %}' alt="" class="img-fluid">
-                                </div>
-                                <div class="title">
-                                    <div class="d-flex align-items-center justify-content-between">
-                                        <div class="title-item">
-                                            <i class="bi bi-tag me-1"></i>
-                                            <span class="font-12">{{ post.category }}</span>
-                                        </div>
-                                        <div class="title-item">
-                                            <i class="bi bi-alarm me-1"></i>
-                                            <span class="font-12">{{ post.publish }}</span>
-                                        </div>
+                    {% for post in posts %}
+                        <div class="col-lg-3">
+                            <div class="blog-item">
+                                <a href="{{ post.get_absolute_url }}">
+                                    <div class="image">
+                                        <img src='{% static "blog/assets/image/blog-1.jpg" %}' alt="" class="img-fluid">
                                     </div>
-                                    <h4 class="font-16 text-overflow-1 h4"> {{ post.title }}
-                                    </h4>
-                                </div>
-                            </a>
+                                    <div class="title">
+                                        <div class="d-flex align-items-center justify-content-between">
+                                            <div class="title-item">
+                                                <i class="bi bi-tag me-1"></i>
+                                                <span class="font-12">{{ post.category }}</span>
+                                            </div>
+                                            <div class="title-item">
+                                                <i class="bi bi-alarm me-1"></i>
+                                                <span class="font-12">{{ post.publish }}</span>
+                                            </div>
+                                        </div>
+                                        <h4 class="font-16 text-overflow-1 h4"> {{ post.title }}
+                                        </h4>
+                                    </div>
+                                </a>
+                            </div>
                         </div>
-                    </div>
                     {% endfor %}
                 </div>
             

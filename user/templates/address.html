@@ -811,12 +811,19 @@
                                                 <div class="media">
                                                     <div class="media-body">
                                                         <h6 class="mb-1">{{ address.title }}</h6>
+                                                        <p class="mb-1"><strong>تحویل گیرنده &nbsp; :</strong> &nbsp;  {{ address.recipient_full_name }}
+                                                        </p>
                                                         <p class="text-overflow-2 address-line">
-                                                            {{ address.full_address }}
+                                                            <strong>آدرس &nbsp; :</strong> &nbsp; 
+                                                            {{address.state}},{{address.city}},{{ address.full_address }}
+                                                        </p>
+                                                        <p>  <strong>پلاک &nbsp; :</strong> &nbsp; {{ address.building_number }} </p>
+                                                        <p> <strong>واحد &nbsp; :</strong> &nbsp; {{ address.building_unit_number }} </p> 
+                                                        <p>
+                                                            <strong>کد پستی  &nbsp; :</strong> &nbsp; {{ address.postal_code }}
                                                         </p>
                                                         <p class="mb-0 text-black btn-group-sm font-weight-bold">
-                                                            <a class="btn btn-primary btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="ویرایش آدرس" href="#"><i class="bi bi-pencil text-white"></i> </a>
-                                                            <a class="btn btn-danger btn-sm" href="#" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="حذف آدرس"><i class="bi bi-trash text-white"></i> </a>
+                                                            <a class="btn btn-primary btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="ویرایش آدرس" href='{% url "address-create" %}'><i class="bi bi-pencil text-white"></i> </a>
                                                             <a class="btn btn-success btn-sm" href="#" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="ثبت به عنوان آدرس پیشفرض"><i class="bi bi-check-lg text-white"></i> </a>
                                                         </p>
                                                     </div>
