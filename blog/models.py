@@ -2,6 +2,7 @@ from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
 from django.urls import reverse
+from taggit.managers import TaggableManager
 
 
 class Post(models.Model):
@@ -16,20 +17,10 @@ class Post(models.Model):
         DARFT = 'DF' , 'Draft'
         PUBLISHED = 'PB' , 'Published'
 
-
-
-    class Category(models.TextChoices):
-        TECHNOLOGY = 'TE' , 'تکنولوژیُ'
-        VIDEOGAME = 'VG' , 'بازی های ویدئویی'
-
-
     title = models.CharField(max_length=250)
     slug = models.SlugField(max_length=250,
                             unique_for_date='publish',
                             null=timezone.now)
-    category =models.CharField(max_length=2,
-                            choices=Category.choices,
-                            default=Category.TECHNOLOGY)
     author = models.ForeignKey(User,
                                on_delete=models.CASCADE,
                                related_name='blog_posts')
@@ -60,6 +51,7 @@ class Post(models.Model):
                               self.publish.month,
                               self.publish.day,
                               self.slug])
+    tags = TaggableManager()
     
   
 

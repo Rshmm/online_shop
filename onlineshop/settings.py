@@ -40,7 +40,9 @@ INSTALLED_APPS = [
     'user',
     'account',
     'blog',
-]
+    'taggit',
+    'shop.apps.ShopConfig',
+    ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
