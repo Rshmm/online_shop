@@ -64,10 +64,10 @@ class AddressForm(forms.Form):
                            widget=forms.TextInput(attrs={"class":"form-control"})
                            )
 
-   street = forms.CharField(label="آدرس کامل محل زندگی خود را وارد کنید",
+   full_address = forms.CharField(label="آدرس کامل محل زندگی خود را وارد کنید",
                            max_length = 500,
                            required=True,
-                           widget=forms.Textarea(attrs={"class":"form-control"})
+                           widget=forms.TextInput(attrs={"class":"form-control"})
                            )
 
    postal_code = forms.CharField(label="کد پستی خود را وارد کنید",

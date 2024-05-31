@@ -581,8 +581,11 @@
                                 <li class="nav-item"><a href="" class="nav-link border-animate fromCenter">سوالی
                                         دارید</a>
                                 </li>
-                                <li class="nav-item"><a href="" class="nav-link border-animate fromCenter">در سانیار
-                                        بفروشید</a></li>
+                                <li class="nav-item"><a href="" class="nav-link border-animate fromCenter">
+                                        وبلاگ</a>
+                                </li>
+                         
+                                </a></li>
                             </ul>
                         </div>
                     </div>
@@ -611,10 +614,9 @@
                 <div class="container-fluid">
                     <nav aria-label="breadcrumb" class="my-lg-0 my-2">
                     <ol class="breadcrumb mb-0">
-                        <li class="breadcrumb-item"><a href="#" class="font-14 text-muted">خانه</a></li>
-                        <li class="breadcrumb-item"><a href="#" class="font-14 text-muted">فروشگاه</a></li>
-                        <li class="breadcrumb-item"><a href="#" class="font-14 text-muted">گوشی هوشمند</a></li>
-                        <li class="breadcrumb-item active main-color-one-color font-14" aria-current="page">گوشی شیائومی
+                        <li class="breadcrumb-item"><a class="font-14 text-muted" href='{% url "home" %}'>خانه</a></li>
+                        <li aria-current="page" class="breadcrumb-item active main-color-one-color font-14">
+                            وبلاگ
                         </li>
                     </ol>
                 </nav>
@@ -1195,30 +1197,30 @@
             </div>
             <div class="container-fluid">
                 <div class="row gy-3">
-                    {% for post in posts%}
-                    <div class="col-lg-3">
-                        <div class="blog-item">
-                            <a href="{{ post.get_absolute_url }}">
-                                <div class="image">
-                                    <img src='{% static "blog/assets/image/blog-1.jpg" %}' alt="" class="img-fluid">
-                                </div>
-                                <div class="title">
-                                    <div class="d-flex align-items-center justify-content-between">
-                                        <div class="title-item">
-                                            <i class="bi bi-tag me-1"></i>
-                                            <span class="font-12">{{ post.category }}</span>
-                                        </div>
-                                        <div class="title-item">
-                                            <i class="bi bi-alarm me-1"></i>
-                                            <span class="font-12">{{ post.publish }}</span>
-                                        </div>
+                    {% for post in posts %}
+                        <div class="col-lg-3">
+                            <div class="blog-item">
+                                <a href="{{ post.get_absolute_url }}">
+                                    <div class="image">
+                                        <img src='{% static "blog/assets/image/blog-1.jpg" %}' alt="" class="img-fluid">
                                     </div>
-                                    <h4 class="font-16 text-overflow-1 h4"> {{ post.title }}
-                                    </h4>
-                                </div>
-                            </a>
+                                    <div class="title">
+                                        <div class="d-flex align-items-center justify-content-between">
+                                            <div class="title-item">
+                                                <i class="bi bi-tag me-1"></i>
+                                                <span class="font-12">{{ post.category }}</span>
+                                            </div>
+                                            <div class="title-item">
+                                                <i class="bi bi-alarm me-1"></i>
+                                                <span class="font-12">{{ post.publish }}</span>
+                                            </div>
+                                        </div>
+                                        <h4 class="font-16 text-overflow-1 h4"> {{ post.title }}
+                                        </h4>
+                                    </div>
+                                </a>
+                            </div>
                         </div>
-                    </div>
                     {% endfor %}
                 </div>
             
