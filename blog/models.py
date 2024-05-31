@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from django.urls import reverse
 from taggit.managers import TaggableManager
 
+
 class Post(models.Model):
 
     class PublishedManager(models.Manager):
@@ -15,7 +16,6 @@ class Post(models.Model):
     class Status(models.TextChoices):
         DARFT = 'DF' , 'Draft'
         PUBLISHED = 'PB' , 'Published'
-
 
     title = models.CharField(max_length=250)
     slug = models.SlugField(max_length=250,
@@ -51,9 +51,9 @@ class Post(models.Model):
                               self.publish.month,
                               self.publish.day,
                               self.slug])
-    
     tags = TaggableManager()
-
+    
+  
 
 class Comment(models.Model):
     post = models.ForeignKey(Post,

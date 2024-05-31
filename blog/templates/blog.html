@@ -1197,6 +1197,9 @@
             </div>
             <div class="container-fluid">
                 <div class="row gy-3">
+                    {% if tag %}
+                        <h2> Posts tagged with "{{ tag.name }}" </h2>
+                    {% endif %}
                     {% for post in posts %}
                         <div class="col-lg-3">
                             <div class="blog-item">
@@ -1208,7 +1211,15 @@
                                         <div class="d-flex align-items-center justify-content-between">
                                             <div class="title-item">
                                                 <i class="bi bi-tag me-1"></i>
-                                                <span class="font-12">{{ post.category }}</span>
+                                                <span class="font-12">
+                                                    {{ post.tags.all|join:", "}}
+                                                    {% comment %} {% for tags in post.tags.all %}
+                                                        <a href='{% url "blog:post_tag" tag.slug%}'>
+                                                            {{ tag.name }}
+                                                        </a>
+                                                        {% if not forloop.last %}, {% endif %}
+                                                    {% endfor %} {% endcomment %}
+                                                </span>
                                             </div>
                                             <div class="title-item">
                                                 <i class="bi bi-alarm me-1"></i>
