@@ -3,17 +3,21 @@ from blog.models import Post,Comment
 from django.core.paginator import Paginator
 from blog.froms import CommentForm
 from django.views.decorators.http import require_POST
+from taggit.models import Tag
 
 
-def post_list(request):
+def post_list(request, tag_slug=None):
     post_list = Post.published.all()
+    tag = None
+    if tag_slug:
+        tag = get_object_or_404(Tag, slug=tag_slug)
+        post_list = post_list.filter(tags_in=[tag])
     p = Paginator(post_list,8)
     page = request.GET.get('page')
-    posts = p.get_page(page)
-
-        
-    return render(request, 'blog.html', {'post_list': post_list,
-                                         'posts': posts})
+    posts = p.get_page(page)    
+    return render(request, 'blog.html', {'tag' : tag,        
+                                        'posts': posts
+                                          })
 
 
 def post_detail(request, year, month, day, post):
