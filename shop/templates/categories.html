@@ -855,6 +855,9 @@
                                 <h5 class="filter-item-title">دسته بندی ها</h5>
                                 <div class="filter-item-content">
                                     <form action="">
+                                        <li {% if not category%} class="selected"{% endif %}>
+                                            <a class="form-check-label" for="inlineRadio2" href='{% url "shop:product_list" %}'>ALL</a>  
+                                        </li>
                                         {% for c in categories %}
                                             <li {% if not category.slug == c.slug %} class="selected"{% endif %}>
                                                 <a class="form-check-label" for="inlineRadio2" href='{{ c.get_absolute_url }}'>{{ c.name }}</a>  
@@ -991,9 +994,6 @@
                                 <div class="col-lg-4">
                                     <div class="product-box ">
                                         <div class="product-timer">
-                                            <div class="timer-label">
-                                                <span>40% تخفیف</span>
-                                            </div>
                                             <div class="product-header-btn">
                                                 <a href="" class="" data-bs-toggle="tooltip" data-bs-placement="top"
                                                     data-bs-title="مقایسه"><i class="bi bi-shuffle"></i></a>
