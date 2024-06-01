@@ -29,7 +29,7 @@ urlpatterns = [
     path('', include('user.urls')),
     path('accounts/', include('account.urls')),
     path('accounts/', include("django.contrib.auth.urls")),
-    path('', include('shop.urls' , namespace='shop')),
+    path('shop/', include('shop.urls' , namespace='shop')),
     path('blog/', include('blog.urls', namespace='blog')),
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
