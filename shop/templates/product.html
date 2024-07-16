@@ -1904,9 +1904,49 @@
                 </div>
             </div>
         </div>
-        <a href='{{ product.category.get_absolute_url }}'>
-            {{ product.category }}
-        </a>
+        <div class="row g-3">
+            {% for product in products%}
+                <div class="col-lg-4">
+                    <div class="product-box ">
+                        <div class="product-timer">
+                            <div class="product-header-btn">
+                                <a href="" class="" data-bs-toggle="tooltip" data-bs-placement="top"
+                                    data-bs-title="مقایسه"><i class="bi bi-shuffle"></i></a>
+                                <a href="" class="" data-bs-toggle="tooltip" data-bs-placement="top"
+                                    data-bs-title="افزودن به علاقه مندی ها"><i class="bi bi-heart"></i></a>
+                                <a href="" class="" data-bs-toggle="tooltip" data-bs-placement="top"
+                                    data-bs-title="مشاهده سریع"><i class="bi bi-eye"></i></a>
+                            </div>
+                        </div>
+                            <div class="product-image">
+                                <img src='{% if product.image %}{{ product.image.url }}{% else %}no image{% endif %}' loading="lazy" href='{{ product.get_absolute_url }}'
+                                    class="img-fluid one-image">
+                                <img src='{{ product.image.url }}' loading="lazy" alt=""
+                                    class="img-fluid two-image">
+                            </div>
+                            <div class="product-title">
+                                <div class="title">
+                                    <p class="text-overflow-1">{{ product.name }}</p>
+
+                                        </span>
+                                </div>
+                                
+                            </div>
+                            <div class="product-action">
+                                <div class="price">
+                                    <p class="price"> تومان &nbsp; {{ product.price }}</p>
+                                </div>
+                                <div class="link">
+                                    <a href='{{ product.get_absolute_url }}' class="btn border-0 rounded-3 main-color-one-bg">
+                                        <i class="bi bi-basket text-white"></i>
+                                        <span class="text-white">خرید محصول</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
 
 <div class="swiper-slide">
     <div class="product-box ">

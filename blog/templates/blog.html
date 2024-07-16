@@ -1049,8 +1049,11 @@
                         <div class="col-lg-3">
                             <div class="blog-item">
                                 <a href="{{ post.get_absolute_url }}">
-                                    <div class="image">
-                                        <img src='{% static "blog/assets/image/blog-1.jpg" %}' alt="" class="img-fluid">
+                                    <div class="product-image">
+                                        {% comment %} <img src='{% if post.image %}{{ post.image.url }}{% else %}no image{% endif %}' loading="lazy" href='{{ post.get_absolute_url }}'
+                                            class="img-fluid one-image"> {% endcomment %}
+                                        <img src='{{ post.image.url }}' loading="lazy" alt=""
+                                            class="img-fluid two-image">
                                     </div>
                                     <div class="title">
                                         <div class="d-flex align-items-center justify-content-between">
