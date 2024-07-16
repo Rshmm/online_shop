@@ -29,6 +29,11 @@ urlpatterns = [
     path('', include('user.urls')),
     path('accounts/', include('account.urls')),
     path('accounts/', include("django.contrib.auth.urls")),
+    path('shop/', include('shop.urls' , namespace='shop')),
     path('blog/', include('blog.urls', namespace='blog')),
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
