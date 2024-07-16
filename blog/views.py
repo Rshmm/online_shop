@@ -7,16 +7,12 @@ from taggit.models import Tag
 from django.db.models import Count 
 
 
-def post_list(request, tag_slug=None):
+def post_list(request):
     post_list = Post.published.all()
-    tag = None
-    if tag_slug:
-        tag = get_object_or_404(Tag, slug=tag_slug)
-        post_list = post_list.filter(tags__in=[tag])
     p = Paginator(post_list,8)
     page = request.GET.get('page')
     posts = p.get_page(page)    
-    return render(request, 'blog.html', {'tag' : tag,        
+    return render(request, 'blog.html', {      
                                         'posts': posts
                                           })
 
@@ -45,17 +41,10 @@ def post_comment(request, post_id):
         comment = form.save(commit=False)
         comment.post = post
         comment.save()
-
-    post_tags_ids = post.tags.values_list('id', flat=True)
-    similar_posts = post.published.filter(tags__in=post_tags_ids)\
-        .exclude(id=post.id)
-    similar_posts = similar_posts.annotate(same_tags=Count('tags'))\
-        .order_by('-same_tags','-publish')[:4]
     return render(request, 'comment.html',
                   {
                       'post' : post,
                       'form' : form,
                       'comment' : comment,
-                      'similar_posts' : similar_posts
                   })
     
