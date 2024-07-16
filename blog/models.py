@@ -21,6 +21,8 @@ class Post(models.Model):
     slug = models.SlugField(max_length=250,
                             unique_for_date='publish',
                             null=timezone.now)
+    image = models.ImageField(upload_to='product/%Y/%m/%d',
+                              blank=True)
     author = models.ForeignKey(User,
                                on_delete=models.CASCADE,
                                related_name='blog_posts')

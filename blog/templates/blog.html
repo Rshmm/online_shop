@@ -1050,6 +1050,11 @@
                             <div class="blog-item">
                                 <a href="{{ post.get_absolute_url }}">
                                     <div class="product-image">
+<<<<<<< HEAD
+                                        {% comment %} <img src='{% if post.image %}{{ post.image.url }}{% else %}no image{% endif %}' loading="lazy" href='{{ post.get_absolute_url }}'
+                                            class="img-fluid one-image"> {% endcomment %}
+=======
+>>>>>>> fe/tagging
                                         <img src='{{ post.image.url }}' loading="lazy" alt=""
                                             class="img-fluid two-image">
                                     </div>
