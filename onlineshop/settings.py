@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'blog',
     'taggit',
     'shop.apps.ShopConfig',
+    'cart',
     ]
 
 MIDDLEWARE = [
